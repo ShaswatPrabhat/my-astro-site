@@ -3,17 +3,44 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+ @font-face {
+ 	font-family: 'wotfardregular';
+ 	src: url('../../fonts/wotfard-regular-webfont.eot');
+ 	src: url('../../fonts/wotfard-regular-webfont.eot?#iefix') format('embedded-opentype'),
+ 		url('../../fonts/wotfard-regular-webfont.woff2') format('woff2'),
+ 		url('../../fonts/wotfard-regular-webfont.ttf') format('truetype');
+ 	font-weight: normal;
+ 	font-style: normal;
+ }
+ 
+
 body {
-	font-family: Verdana, sans-serif;
 	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
 	text-align: left;
-	background-color: #fff;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
-	color: #444;
+	color: rgb(249, 246, 246);
+	background: #000000;
+		/* fallback for old browsers */
+		background: -webkit-linear-gradient(to right,
+				#434343,
+				#000000);
+		/* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right,
+				#434343,
+				#000000);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	font-family: 'wotfardregular';
+	height: 100vh;
+
+}
+
+.content{
+	padding:20px;
+	max-width: 65ch;
+	margin: auto;
+	background: none;
 }
 h1,
 h2,
@@ -64,4 +91,4 @@ blockquote {
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 	font-style: italic;
-}
+} 
