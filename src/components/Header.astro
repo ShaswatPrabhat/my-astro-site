@@ -4,9 +4,11 @@ import { SITE_TITLE } from "../config";
 ---
 
 <header>
-  <h2>
-    {SITE_TITLE}
-  </h2>
+  <a href="/">
+    <h2>
+      {SITE_TITLE}
+    </h2>
+  </a>
   <nav>
     <HeaderLink href="/">Home</HeaderLink>
     <HeaderLink href="/blog">Blog</HeaderLink>
@@ -25,5 +27,8 @@ import { SITE_TITLE } from "../config";
   }
   h2 {
     margin: 0.5em 0;
+  }
+  a {
+    text-decoration: none;
   }
 </style>

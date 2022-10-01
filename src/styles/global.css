@@ -28,15 +28,7 @@ b {
 }
 a {
 	color: #3273dc;
-	transition-property: transform;
-	transition-duration: 0.3s;
-	transition-timing-function: ease-in-out;
 }
-
-a:hover {
-	transform: translateY(10%);
-}
-
 
 nav a {
 	margin-right: 10px;
