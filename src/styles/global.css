@@ -13,34 +13,8 @@
  	font-style: normal;
  }
  
-
-body {
-	margin: auto;
-	text-align: left;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: rgb(249, 246, 246);
-	background: #000000;
-		/* fallback for old browsers */
-		background: -webkit-linear-gradient(to right,
-				#434343,
-				#000000);
-		/* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(to right,
-				#434343,
-				#000000);
-		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	font-family: 'wotfardregular';
-	height: 100vh;
-
-}
-
-.content{
-	padding:20px;
-	max-width: 65ch;
-	margin: auto;
-	background: none;
+html{
+	overscroll-behavior: none;
 }
 h1,
 h2,
@@ -54,7 +28,16 @@ b {
 }
 a {
 	color: #3273dc;
+	transition-property: transform;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
 }
+
+a:hover {
+	transform: translateY(10%);
+}
+
+
 nav a {
 	margin-right: 10px;
 }
@@ -77,7 +60,7 @@ img {
 }
 code {
 	padding: 2px 5px;
-	background-color: #f2f2f2;
+	/* background-color: #f2f2f2; */
 }
 pre {
 	padding: 1rem;
