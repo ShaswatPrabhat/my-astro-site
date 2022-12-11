@@ -1,8 +1,8 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+// Use Astro.glob() to fetch all notes, and then sort them by date.
+const notes = (await Astro.glob("./notes/*.{md,mdx}")).sort(
   (a, b) =>
     new Date(b.frontmatter.pubDate).valueOf() -
     new Date(a.frontmatter.pubDate).valueOf()
@@ -10,20 +10,20 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 ---
 
 <SiteLayout>
-  <h3>My blogs on topics I like exploring and deep-diving</h3>
+  <h3>Notes - Basically rough snippets, rough and loosely coupled</h3>
   <section>
     <ul>
       {
-        posts.map((post) => (
+        notes.map((note) => (
           <li>
-            <time datetime={post.frontmatter.pubDate}>
-              {new Date(post.frontmatter.pubDate).toLocaleDateString("en-us", {
+            <time datetime={note.frontmatter.pubDate}>
+              {new Date(note.frontmatter.pubDate).toLocaleDateString("en-us", {
                 year: "numeric",
                 month: "short",
                 day: "numeric",
               })}
             </time>
-            <a href={post.url}>{post.frontmatter.title}</a>
+            <a href={note.url}>{note.frontmatter.title}</a>
           </li>
         ))
       }
