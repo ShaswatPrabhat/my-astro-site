@@ -31,16 +31,16 @@ const {
     <h1 class="title">{title}</h1>
     {pubDate && <time>{pubDate}</time>}
     {
-      updatedDate && (
+      description && (
         <div>
-          Last updated on <time>{updatedDate}</time>
+          <h4>{description}</h4>
         </div>
       )
     }
     {
-      description && (
+      updatedDate && (
         <div>
-          <h4>{description}</h4>
+          Last updated on <time>{updatedDate}</time>
         </div>
       )
     }
