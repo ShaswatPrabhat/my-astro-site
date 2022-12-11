@@ -18,7 +18,16 @@ const {
 
 <SiteLayout>
   <article>
-    {heroImage && <img src={heroImage} alt="" />}
+    {
+      heroImage && (
+        <img
+          src={heroImage}
+          width="640"
+          height="360"
+          alt="A Hero Image for the blog post"
+        />
+      )
+    }
     <h1 class="title">{title}</h1>
     {pubDate && <time>{pubDate}</time>}
     {
@@ -41,6 +50,7 @@ const {
 </SiteLayout>
 <style>
   img {
-    max-width: 100vw;
+    height: auto;
+    width: 100vw;
   }
 </style>
