@@ -11,10 +11,15 @@
   },
   "dependencies": {
     "@astrojs/mdx": "0.11.5",
+    "@astrojs/react": "^1.2.2",
     "@astrojs/rss": "1.0.3",
     "@astrojs/sitemap": "1.0.0",
     "@astrojs/vercel": "2.3.2",
-    "astro": "1.6.1"
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "astro": "1.6.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "prettier": "2.7.1",
