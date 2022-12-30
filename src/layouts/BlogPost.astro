@@ -28,11 +28,15 @@ const {
         />
       )
     }
-    <h1 class="title">{title}</h1>
+    <br />
+
+    <h4 class="title">{title}</h4>
     {pubDate && <time>{pubDate}</time>}
     {
       description && (
-        <p style="font-size: larger; font-weight: bolder;">{description}</p>
+        <p style="font-size: larger; font-weight: bolder; margin-top: 10px; margin-bottom: 10px;">
+          {description}
+        </p>
       )
     }
     {

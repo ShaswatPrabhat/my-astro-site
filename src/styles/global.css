@@ -1,10 +1,6 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
 @import "open-props/normalize";
 @import "open-props/fonts";
+/* @import "open-props/sizes"; */
 @font-face {
   font-family: "wotfardregular";
   src: url("/fonts/wotfard-regular-webfont.eot");
@@ -19,10 +15,48 @@
 
 html {
   overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: auto;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: var(--font-lineheight-1);
+  color: rgb(249, 246, 246);
+  font-family: "wotfardregular";
+  height: 100%;
+  background-repeat: repeat;
+}
+
+main {
+  min-height: 60vh;
 }
 
 a {
   color: #d9e2f3;
+  position: relative;
+  text-decoration: none;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #0074d9;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
 }
 
 /* nav a {

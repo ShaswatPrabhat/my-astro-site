@@ -11,12 +11,10 @@ const isActive = href === Astro.url.pathname;
 <style>
   a {
     display: inline-block;
-    text-decoration: none;
     margin-right: 1vw;
   }
   a.active {
-    font-weight: bolder;
-    text-decoration: underline;
-    font-size: larger;
+    font-weight: var(--font-weight-1);
+    font-size: var(--font-size-4);
   }
 </style>
