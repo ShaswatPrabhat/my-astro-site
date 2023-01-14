@@ -1,7 +1,9 @@
 @import "open-props/normalize";
 @import "open-props/fonts";
-/* @import "open-props/sizes"; */
-@font-face {
+
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/* @font-face {
   font-family: "wotfardregular";
   src: url("/fonts/wotfard-regular-webfont.eot");
   src: url("/fonts/wotfard-regular-webfont.eot?#iefix")
@@ -11,7 +13,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 html {
   overscroll-behavior: none;
@@ -27,7 +29,7 @@ Uncomment the below for CSS debugging
 body {
   line-height: var(--font-lineheight-1);
   color: rgb(249, 246, 246);
-  font-family: "wotfardregular";
+  font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
 main {
