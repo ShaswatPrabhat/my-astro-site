@@ -15,15 +15,15 @@
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.29.5.tgz#708db3e2632caf30480e4f502e7a0fd0f1c1d7d2"
   integrity sha512-XpSJyBO6ha5mGqsD71ie83SOcv3p7zKq6qzngyeLKhccCXtf9Zn/4tGbi/Iq4YmkRBNCjLEkF0wZMYWY+eJYAA==
 
-"@astrojs/compiler@^0.31.3":
-  version "0.31.4"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.31.4.tgz#fa5aaeb3e6f3640f6f7625849b724a4d28d662e4"
-  integrity sha512-6bBFeDTtPOn4jZaiD3p0f05MEGQL9pw2Zbfj546oFETNmjJFWO3nzHz6/m+P53calknCvyVzZ5YhoBLIvzn5iw==
-
 "@astrojs/compiler@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-1.0.1.tgz#ed5d758c9824cc497361b632f1570d9ce2a4ce31"
   integrity sha512-77aacobLKcL98NmhK3OBS5EHIrX9gs1ckB/vGSIdkVZuB7u51V4jh05I6W0tSvG7/86tALv6QtHTRZ8rLhFTbQ==
+
+"@astrojs/compiler@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-1.1.0.tgz#ab77b1c9ed5dfa30588c99346974fb3038b96833"
+  integrity sha512-C4kTwirys+HafufMqaxCbML2wqkGaXJM+5AekXh/v1IIOnMIdcEON9GBYsG6qa8aAmLhZ58aUZGPhzcA3Dx7Uw==
 
 "@astrojs/language-server@^0.28.3":
   version "0.28.3"
@@ -43,10 +43,10 @@
     vscode-languageserver-types "^3.17.1"
     vscode-uri "^3.0.3"
 
-"@astrojs/markdown-remark@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.0.0.tgz#16fd5a4042f900c9a367d9afdcd7188a70344a46"
-  integrity sha512-PqDxi3L2jsxLWjsWRyn+BkaDtHKq2+ECI7PlW9NsEwu2jKKgl7sXj57s/Wjhyctr4efFdzewFArVFm1Gnb3rtw==
+"@astrojs/markdown-remark@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.0.1.tgz#48ecc33dde9231eb20df274e87099552834c4a1f"
+  integrity sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==
   dependencies:
     "@astrojs/prism" "^2.0.0"
     github-slugger "^1.4.0"
@@ -62,12 +62,12 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.15.0.tgz#bbab44672929009fdbacf2fe31ba20e151012a17"
-  integrity sha512-KABnoWZJdtmzlbTbCJKLHRfX6fM9PS+BjSUSq/OHlkkejPUlmrZvGbDdN0Yfw1/gY/KDP48L7BLy/9VAk5Y/Wg==
+"@astrojs/mdx@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.16.0.tgz#74bf1a9d8049d2eff75986ac0a7717263fc7c706"
+  integrity sha512-HNk0FhNNthI7+pLmheJyPVU36dXE5l+9UwmmnrMV6COHNZIO2t+pnWnsushEDYZjpkYITDwnXKnQAtD8Mqj4xw==
   dependencies:
-    "@astrojs/markdown-remark" "^2.0.0"
+    "@astrojs/markdown-remark" "^2.0.1"
     "@astrojs/prism" "^2.0.0"
     "@mdx-js/mdx" "^2.1.2"
     "@mdx-js/rollup" "^2.1.1"
@@ -92,10 +92,10 @@
   dependencies:
     prismjs "^1.28.0"
 
-"@astrojs/react@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-2.0.0.tgz#628d2a293d7187f65ac0be62ee16ce6124666c6c"
-  integrity sha512-drHnCnYH6u6hKN4ObNepw4OQiCvMsRFLeKqRbbGmME5yJyxfdkFw2K4m/8zGah90LgW1xmr9hyPsSVU3PTmd9g==
+"@astrojs/react@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-2.0.2.tgz#22e1dfb01f481dc2e6b58607f8b131a8754a2d91"
+  integrity sha512-UmQNvzJul5M/Q9aZJXnqz4z0ODZXkLuaNvgsYoKB7OdM8c2v85FsTjMZZJ7BvFo4On31jJ0rL/gwTaCeuYqmpw==
   dependencies:
     "@babel/core" ">=7.0.0-0 <8.0.0"
     "@babel/plugin-transform-react-jsx" "^7.17.12"
@@ -108,10 +108,10 @@
     fast-xml-parser "^4.0.8"
     kleur "^4.1.5"
 
-"@astrojs/sitemap@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/sitemap/-/sitemap-1.0.0.tgz#d5e7360e08f8f3b17bb1b8faa4c882aa39d18c25"
-  integrity sha512-42GxuF5FP7RaKXZrwGLBLOX3hPv+Wl7ExJC43O0J5e34ojJkLeKf7QfwN1UwrJlqH0Ywi0Fm4/xGe482G09+wg==
+"@astrojs/sitemap@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/sitemap/-/sitemap-1.0.1.tgz#8afbc003d3be4bffccac04b682cf65a319870205"
+  integrity sha512-qexepZPH6/dLToI/njxr2FjvyxJU0HBAnQRNzEggF0ok811oSNC6su1DkyW2VKp0TNPbWoujuSbcb1yFOjnAqA==
   dependencies:
     sitemap "^7.1.1"
     zod "^3.17.3"
@@ -130,15 +130,17 @@
     undici "^5.14.0"
     which-pm-runs "^1.1.0"
 
-"@astrojs/vercel@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/vercel/-/vercel-3.0.0.tgz#15d9d3ed2a6b9c328ea8b0a41c2bef8dee25e9a9"
-  integrity sha512-fzoa8C0AbiLNkAkTZV4wIEdqaE/U99x0mFSHgA3SV2OwWszch29l8pQMnLUHXTXVy1OwmNba4QRm1B8hkPwo9g==
+"@astrojs/vercel@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/vercel/-/vercel-3.1.1.tgz#185128598780489dc70fe2afdb785cba0cee8791"
+  integrity sha512-3u976waO1HjnmvImmdTiiHqlH+kCF/NAmppwtzWg86uTLj581gYy6OXIfzMxg5uvC1tODbciuauFJcmdEBThIw==
   dependencies:
     "@astrojs/webapi" "^2.0.0"
+    "@vercel/analytics" "^0.1.8"
     "@vercel/nft" "^0.22.1"
     fast-glob "^3.2.11"
     set-cookie-parser "^2.5.1"
+    web-vitals "^3.1.1"
 
 "@astrojs/webapi@^2.0.0":
   version "2.0.0"
@@ -906,6 +908,11 @@
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-21.0.0.tgz#0c60e537fa790f5f9472ed2776c2b71ec117351b"
   integrity sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==
 
+"@vercel/analytics@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-0.1.8.tgz#71f1f8c7bb98ac0c5c47eb3fb8ccbe8141b9fe47"
+  integrity sha512-PQrOI8BJ9qUiVJuQfnKiJd15eDjDJH9TBKsNeMrtelT4NAk7d9mBVz1CoZkvoFnHQ0OW7Xnqmr1F2nScfAnznQ==
+
 "@vercel/nft@^0.22.1":
   version "0.22.1"
   resolved "https://registry.yarnpkg.com/@vercel/nft/-/nft-0.22.1.tgz#0d91d2a21e3a7f0b23ce1550da9870eac4942828"
@@ -1033,14 +1040,14 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.3.tgz#1a0ae738c7cc558f8e5ddc8e3120636f5cebcb85"
   integrity sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==
 
-astro@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.1.tgz#7404ef119db41cdcd1b9e6094b4f87ef060cb6a3"
-  integrity sha512-EXq1lks+ylmArhtUs99PQelK0bQ3VS+698OO9UYkjG08Bd02ficqihsRGBnhEor7U9989hZb+1p4y0rNpgKH8g==
+astro@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.10.tgz#89d8991c002256f0b2eb31f8144b82f4923527ef"
+  integrity sha512-Jg2JYPA6Nlip27So1+O0p9VFL98H+LiDLEt+F65e6536LkWE5oiV0fDSbK8aI8hKeCvOQzLiEZiD21eXbug0XQ==
   dependencies:
-    "@astrojs/compiler" "^1.0.1"
+    "@astrojs/compiler" "^1.1.0"
     "@astrojs/language-server" "^0.28.3"
-    "@astrojs/markdown-remark" "^2.0.0"
+    "@astrojs/markdown-remark" "^2.0.1"
     "@astrojs/telemetry" "^2.0.0"
     "@astrojs/webapi" "^2.0.0"
     "@babel/core" "^7.18.2"
@@ -3110,13 +3117,13 @@ preferred-pm@^3.0.3:
     path-exists "^4.0.0"
     which-pm "2.0.0"
 
-prettier-plugin-astro@0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-0.7.2.tgz#d761cde54714c6871c731bec179d4cf75e2d86d6"
-  integrity sha512-mmifnkG160BtC727gqoimoxnZT/dwr8ASxpoGGl6EHevhfblSOeu+pwH1LAm5Qu1MynizktztFujHHaijLCkww==
+prettier-plugin-astro@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-0.8.0.tgz#ae014f8263ca383ee853192cc40a516e914684a5"
+  integrity sha512-kt9wk33J7HvFGwFaHb8piwy4zbUmabC8Nu+qCw493jhe96YkpjscqGBPy4nJ9TPy9pd7+kEx1zM81rp+MIdrXg==
   dependencies:
-    "@astrojs/compiler" "^0.31.3"
-    prettier "^2.7.1"
+    "@astrojs/compiler" "^1.0.1"
+    prettier "^2.8.3"
     sass-formatter "^0.7.5"
     synckit "^0.8.4"
 
@@ -3130,10 +3137,10 @@ prettier-plugin-astro@^0.7.0:
     sass-formatter "^0.7.5"
     synckit "^0.8.4"
 
-prettier@2.8.3:
-  version "2.8.3"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.3.tgz#ab697b1d3dd46fb4626fbe2f543afe0cc98d8632"
-  integrity sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==
+prettier@2.8.4, prettier@^2.8.3:
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.4.tgz#34dd2595629bfbb79d344ac4a91ff948694463c3"
+  integrity sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==
 
 prettier@^2.7.1:
   version "2.7.1"
@@ -3981,6 +3988,11 @@ web-namespaces@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-2.0.1.tgz#1010ff7c650eccb2592cebeeaf9a1b253fd40692"
   integrity sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==
+
+web-vitals@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.1.1.tgz#bb124a03df7a135617f495c5bb7dbc30ecf2cce3"
+  integrity sha512-qvllU+ZeQChqzBhZ1oyXmWsjJ8a2jHYpH8AMaVuf29yscOPZfTQTjQFRX6+eADTdsDE8IanOZ0cetweHMs8/2A==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
