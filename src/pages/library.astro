@@ -2,20 +2,20 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 
 // Use Astro.glob() to fetch all notes, and then sort them by date.
-const libraryEntries = (await Astro.glob("./library/*.{md,mdx}")).sort(
-  (a, b) =>
-    new Date(b.frontmatter.pubDate).valueOf() -
-    new Date(a.frontmatter.pubDate).valueOf()
-);
+// const libraryEntries = (await Astro.glob("./library/*.{md,mdx}")).sort(
+//   (a, b) =>
+//     new Date(b.frontmatter.pubDate).valueOf() -
+//     new Date(a.frontmatter.pubDate).valueOf()
+// );
 ---
 
 <SiteLayout>
-  <h5>My Reads and reviews of things I have read</h5>
+  <h5>My reads and reviews of things I have read</h5>
   <br />
-  <section>
+  <!-- <section>
     <ul>
       {
-        libraryEntries.map((note) => (
+        libraryEntries?.map((note) => (
           <li>
             <time datetime={note.frontmatter.pubDate}>
               {new Date(note.frontmatter.pubDate).toLocaleDateString("en-us", {
@@ -29,5 +29,5 @@ const libraryEntries = (await Astro.glob("./library/*.{md,mdx}")).sort(
         ))
       }
     </ul>
-  </section>
+  </section> -->
 </SiteLayout>
