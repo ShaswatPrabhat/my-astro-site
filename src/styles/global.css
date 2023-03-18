@@ -4,18 +4,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-/* @font-face {
-  font-family: "wotfardregular";
-  src: url("/fonts/wotfard-regular-webfont.eot");
-  src: url("/fonts/wotfard-regular-webfont.eot?#iefix")
-      format("embedded-opentype"),
-    url("/fonts/wotfard-regular-webfont.woff2") format("woff2"),
-    url("/fonts/wotfard-regular-webfont.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-} */
-
 html {
   /* light */
   --brand-light: var(--orange-3);
@@ -176,7 +164,6 @@ html {
 
 html {
   overscroll-behavior: none;
-  scroll-behavior: smooth;
   background-color: var(--surface-1);
   color: var(--text-1);
   accent-color: var(--brand);
@@ -239,5 +226,12 @@ a::before {
     left: 0;
     right: auto;
     width: 100%;
+  }
+}
+
+/* Smooth scrolling IF user doesn't have a preference due to motion sensitivities */
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
