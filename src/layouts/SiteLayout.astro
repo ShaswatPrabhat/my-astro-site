@@ -37,14 +37,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
       <main>
         <slot />
       </main>
-      <Footer />
     </div>
-
+    <Footer />
     <style>
       .content-wrapper {
         padding: 2vw;
         max-width: 65ch;
-        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
     </style>
   </body>
