@@ -192,7 +192,7 @@ body {
   line-height: var(--font-lineheight-1);
   color: var(--text-1);
   font-family: "Atkinson Hyperlegible", sans-serif;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
