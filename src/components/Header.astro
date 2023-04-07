@@ -8,11 +8,25 @@ import { SITE_TITLE } from "../config";
     <a href="/" style="font-size: 4ch">
       {SITE_TITLE}
     </a>
-    <div style="cursor: pointer" onClick="window.open('https://github.com/ShaswatPrabhat', '_blank');">
+    <div
+      style="cursor: pointer"
+      onClick="window.open('https://github.com/ShaswatPrabhat', '_blank');"
+    >
       <img
         src="/github-mark-white.svg"
-        alt="Github mark white logo"
-        class="github-white-mark-logo"
+        alt="Github profile link"
+        class="social-header-logos"
+      />
+    </div>
+    <div
+      style="cursor: pointer"
+      onClick="window.open('https://twitter.com/ShaswatPrabhat', '_blank');"
+    >
+      <img
+        src="/twitter-social-blue.svg"
+        alt="Twitter profile link"
+        class="social-header-logos"
+        style="width: 35px; height:35px;"
       />
     </div>
   </div>
@@ -23,12 +37,6 @@ import { SITE_TITLE } from "../config";
     <HeaderLink href="/about">About</HeaderLink>
     <HeaderLink href="/notes">Notes</HeaderLink>
     <HeaderLink href="/library">Library</HeaderLink>
-    <HeaderLink href="https://twitter.com/ShaswatPrabhat" target="_blank">
-      Twitter
-    </HeaderLink>
-    <HeaderLink href="https://github.com/ShaswatPrabhat" target="_blank">
-      GitHub
-    </HeaderLink>
   </nav>
 </header>
 <style>
@@ -36,7 +44,7 @@ import { SITE_TITLE } from "../config";
     display: flex;
     align-items: center;
   }
-  .github-white-mark-logo {
+  .social-header-logos {
     width: 30px;
     height: 30px;
     align-self: center;
