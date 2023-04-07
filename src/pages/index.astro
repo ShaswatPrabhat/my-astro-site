@@ -19,7 +19,6 @@ import SiteLayout from "../layouts/SiteLayout.astro";
   </p>
 
   <iframe
-    width="auto"
     height="500"
     src="https://www.youtube.com/embed/TbWo5ukhZYo"
     title="Unfold UI 2022 - State of bundlers"
@@ -27,3 +26,11 @@ import SiteLayout from "../layouts/SiteLayout.astro";
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen></iframe>
 </SiteLayout>
+
+<style>
+  @media screen {
+  }
+  iframe {
+    width: min(90vw, auto);
+  }
+</style>

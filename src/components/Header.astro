@@ -4,9 +4,19 @@ import { SITE_TITLE } from "../config";
 ---
 
 <header>
-  <a href="/" style="font-size: 4ch">
-    {SITE_TITLE}
-  </a>
+  <div class="site-header">
+    <a href="/" style="font-size: 4ch">
+      {SITE_TITLE}
+    </a>
+    <div style="cursor: pointer" onClick="window.open('https://github.com/ShaswatPrabhat', '_blank');">
+      <img
+        src="/github-mark-white.svg"
+        alt="Github mark white logo"
+        class="github-white-mark-logo"
+      />
+    </div>
+  </div>
+
   <nav>
     <HeaderLink href="/">Home</HeaderLink>
     <HeaderLink href="/blog">Blog</HeaderLink>
@@ -22,6 +32,16 @@ import { SITE_TITLE } from "../config";
   </nav>
 </header>
 <style>
+  .site-header {
+    display: flex;
+    align-items: center;
+  }
+  .github-white-mark-logo {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    margin-left: 30px;
+  }
   header {
     margin: 0 0 2em;
     align-self: flex-start;
@@ -34,7 +54,6 @@ import { SITE_TITLE } from "../config";
   }
   nav {
     margin-top: 3vh;
-    width: 35vw;
     align-self: center;
   }
 </style>
