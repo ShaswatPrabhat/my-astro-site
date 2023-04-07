@@ -30,8 +30,14 @@ const {
     }
     <br />
 
-    <h4 class="title">{title}</h4>
-    {pubDate && <time>{pubDate}</time>}
+    <h3 class="title">{title}</h3>
+    {
+      pubDate && (
+        <div class="pub-date">
+          <time>{pubDate}</time>
+        </div>
+      )
+    }
     {
       description && (
         <p style="font-size: larger; font-weight: bolder; margin-top: 10px; margin-bottom: 10px;">
@@ -41,7 +47,7 @@ const {
     }
     {
       updatedDate && (
-        <div>
+        <div class="updated-date">
           Last updated on <time>{updatedDate}</time>
         </div>
       )
@@ -53,5 +59,16 @@ const {
 <style>
   img {
     max-width: 100vw;
+  }
+  .title {
+    margin-bottom: 1vh;
+  }
+  .pub-date {
+    margin-bottom: 10vh;
+  }
+  .astro-code {
+    background-color: red;
+    height: 500px;
+    max-inline-size: unset;
   }
 </style>

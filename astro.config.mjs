@@ -7,7 +7,14 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com/",
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [
+    mdx({
+      syntaxHighlight: "shiki",
+      shikiConfig: { theme: "dracula" },
+    }),
+    sitemap(),
+    react(),
+  ],
   output: "server",
   adapter: vercelServerless(),
 });

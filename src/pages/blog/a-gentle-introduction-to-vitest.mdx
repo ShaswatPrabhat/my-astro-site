@@ -1,0 +1,160 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "A gentle introduction to Vitest"
+pubDate: "Apr 07 2023"
+---
+
+[Vitest](https://vitest.dev/) is a new Javascript Unit testing framework which describes itself as _blazing fast_ and _Vite-native_.
+
+In this post we will try and understand the basics of this framework while building an understanding of what makes Vitest different from existing libraries in this space.
+
+<br />
+<br />
+
+#### A 100ft view of Vite
+
+While we will not be covering [Vite](https://vitejs.dev/) in this post, it will help us to understand some bits of it to appreciate Vitest better.
+
+Vite is an [ESM-first](https://vitejs.dev/guide/why.html#the-problems) bundler which combines amazing developer experience with awesome speed.
+
+Simply put, Vite brings in the best of both worlds - non-JS bundlers to provide amazing speed, and ESM-ness and all the advantages of native ESM via Rollup.
+This means out of the box support for most of the features like code-splitting, CSS and Asset Handling, JSX, TS etc.
+This also means a new way of thinking about your code in terms of ESM first and leaving the rest to Vite.
+
+<br />
+<br />
+
+#### On to Vitest
+
+Traditionally, [Jest](https://jestjs.io/) has been [the most widely](https://2022.stateofjs.com/en-US/libraries/testing/) used JS Unit testing framework of choice.
+While Jest is an incredible framework, it has had some [slowness issues](https://blog.bitsrc.io/why-is-my-jest-suite-so-slow-2a4859bb9ac0).
+But a bigger problem around Jest is the tooling that might be needed to run our first test. We might need a transpiler liked [Babel](https://babeljs.io/) and transformers to create Jest digestible code.
+
+<br />
+<br />
+
+#### The bane of runtimes
+
+Web development is closely tied to [runtimes](https://www.codecademy.com/article/introduction-to-javascript-runtime-environments). That means that even if our code is targeting Browsers of different generations (a challenge in its own), we might still need a lot of tooling for Node runtimes.
+Our test runners and even build tools have had to deal with this disparity for a long time, hence the plethora of [plugins in tools like Webpack](https://webpack.js.org/plugins/) to target bundling of all kinds of file formats.
+
+<br />
+<br />
+
+#### A possible solution?
+
+What Vitest helps achieve is that the [same configuration](https://vitejs.dev/config/) for Vite dev and production can be used for testing, eliminating the middle layers of transpilers, coupled with all advantages of Vite's API 🔥🔥.
+
+<br />
+<br />
+
+#### Ok, I am kind of convinced...
+
+But there is more!
+
+Below are some of the Vitest APIs and features that I have been loving.
+For a full list [do check out the documentation](https://vitest.dev/api/):
+
+<br />
+<br />
+
+=> [Configuring Vitest](https://vitest.dev/guide/#configuring-vitest) feels very similar to [configuring Vite](https://vitejs.dev/config/). A typical Vitest Config might look like below:
+
+```ts
+/// <reference types="vitest" />
+
+import { defineConfig } from "vite";
+import Vue from "@vitejs/plugin-vue";
+
+export default defineConfig({
+  plugins: [Vue()],
+  test: {
+    globals: true,
+    environment: "jsdom",
+  },
+});
+```
+
+<br />
+<br />
+
+=> [Rich CLI](https://vitest.dev/guide/cli.html) with most pragmatic options covered like [running related tests](https://vitest.dev/guide/cli.html#vitest-related), [watch mode](https://vitest.dev/guide/cli.html#vitest-watch), and [`changed` to run tests on changed files only](https://vitest.dev/guide/cli.html#changed). Scripts like below can be added to `package.json`:
+
+```json
+...
+"scripts": {
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
+  },
+...
+```
+
+<br />
+<br />
+
+=> Inbuilt [coverage](https://vitest.dev/guide/coverage.html) support with `instanbul` and `c8`
+
+<br />
+<br />
+
+=> The [amazing vi utility](https://vitest.dev/api/vi.html)provides powerful support for mocking, spying and timers. A sample mock in Vitest will look like:
+
+```ts
+vi.mock("../src/log.ts", async () => {
+  const log = await import("../src/log");
+  return {
+    default: {
+      ...log.default,
+      info: vi.fn(),
+    },
+  };
+});
+```
+
+and a spy like below:
+
+```ts
+const buySpy = vi.spyOn(market, "buy");
+expect(buySpy).not.toHaveBeenCalled();
+```
+
+<br />
+<br />
+
+=> [Rust-inspired](https://doc.rust-lang.org/book/ch11-03-test-organization.html#the-tests-module-and-cfgtest) in source-testing, a way to write and execute tests from [within the source code](https://vitest.dev/guide/in-source.html).
+
+```ts
+// src/index.ts
+export function add(...args: number[]) {
+  return args.reduce((a, b) => a + b, 0);
+}
+// in-source test suites
+if (import.meta.vitest) {
+  const { it, expect } = import.meta.vitest;
+  it("add", () => {
+    expect(add()).toBe(0);
+    expect(add(1)).toBe(1);
+    expect(add(1, 2, 3)).toBe(6);
+  });
+}
+```
+
+<br />
+<br />
+
+=> [Assertions](https://vitest.dev/api/expect.html) which are very similar to Jest or Mocha
+
+<br />
+<br />
+
+=> [A shiny UI](https://vitest.dev/guide/ui.html) leveraging the underlying Vite dev server for running the tests.
+
+![Vitest UI](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/30e4h3e3w8bynwl8mlqd.png)
+
+### Wow! this looks amazing
+
+Welcome to the club!
+This was aimed to be an introductory entry point to Vitest.
+Do share your experiences on using this amazing library in comments below.
+Until next time!🖖
