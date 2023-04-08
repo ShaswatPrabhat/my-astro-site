@@ -235,3 +235,9 @@ a::before {
     scroll-behavior: smooth;
   }
 }
+:where(pre) {
+  max-inline-size: unset;
+  margin: 20px 0;
+  padding: 20px;
+  font-size: var(--font-size-3);
+}
