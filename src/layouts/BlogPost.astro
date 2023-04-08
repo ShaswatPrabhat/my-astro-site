@@ -1,6 +1,6 @@
 ---
 import SiteLayout from "./SiteLayout.astro";
-
+import { Image } from "@astrojs/image/components";
 export interface Props {
   content: {
     title: string;
@@ -20,10 +20,10 @@ const {
   <article>
     {
       heroImage && (
-        <img
+        <Image
           src={heroImage}
-          width="640"
-          height="360"
+          width={800}
+          aspectRatio={16 / 9}
           alt="A Hero Image for the blog post"
         />
       )
@@ -38,13 +38,7 @@ const {
         </div>
       )
     }
-    {
-      description && (
-        <p style="font-size: larger; font-weight: bolder; margin-top: 10px; margin-bottom: 10px;">
-          {description}
-        </p>
-      )
-    }
+    {description && <p class="description">{description}</p>}
     {
       updatedDate && (
         <div class="updated-date">
@@ -65,5 +59,11 @@ const {
   }
   .pub-date {
     margin-bottom: 10vh;
+  }
+  .description {
+    font-size: larger;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 </style>
