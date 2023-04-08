@@ -7,13 +7,20 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com/",
+  site: "https://shaswat.vercel.app/",
   integrations: [
     mdx({
       syntaxHighlight: "shiki",
       shikiConfig: { theme: "dracula" },
     }),
-    sitemap(),
+    sitemap({
+      customPages: [
+        "https://shaswat.vercel.app/blog",
+        "https://shaswat.vercel.app/about",
+        "https://shaswat.vercel.app/notes",
+        "https://shaswat.vercel.app/library",
+      ],
+    }),
     react(),
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
