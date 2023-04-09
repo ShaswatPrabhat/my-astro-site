@@ -227,6 +227,11 @@ a::before {
     right: auto;
     width: 100%;
   }
+  a:active::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
 }
 
 /* Smooth scrolling IF user doesn't have a preference due to motion sensitivities */
