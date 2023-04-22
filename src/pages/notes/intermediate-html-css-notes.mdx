@@ -1,0 +1,31 @@
+# Notes from Jen Kramer's Intermediate HTML and CSS FEMasters Course
+<br/>
+
+## Notes
+* [Course Website](https://frontendmasters.com/courses/intermediate-html-css/html-lists/)
+* 4 kinds of `lists` in HTML
+* Unordered lists - Bulletted lists
+* Ordered lists - Numbered lists
+* Description lists - Lists for Key Value pairs
+* Menus or Interactive lists - Like a Button group powered by JS options
+* Know the patterns in the HTML before writing the CSS based on those patterns in HTML
+* If you cant see if you cant style it
+* Put a border around any element that needs to be styled
+* The below CSS is used for mostly to reset styling:
+    ```css
+    *,
+    *::before,
+    *::after {
+    box-sizing: border-box;
+    }
+    ```
+* Say I have a `font-family` property set on a `ul` element, Then all the childrent will<b> inherit</b> that property as well and the font will be applicable to all children of the `ul` element
+* And this is where we can use `class` names for CSS selection, this too will be inherited by all children
+* `id` s should appear only once in a page
+* A Descendant Selector -  Grandchildren and below in an HTML tree are all descendants
+* Read Selectors from <b> Right to left </b>
+* flexbox and grid also have very specific properties for Children and parents, We can use Parent-child Selectors in this case
+* `>` is th general parent-child selctor
+* `~` is the genral sibling selector
+* `+` is able to select only those that are next to each other
+* 

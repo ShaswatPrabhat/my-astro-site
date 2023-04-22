@@ -1,0 +1,40 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "FEMasters Full stack Notes"
+description: "Notes from Maximilano Firtman's Fullstack Authentication course"
+pubDate: "Jul 08 2022"
+heroImage: "/placeholder-hero.jpg"
+draft: false
+---
+
+
+* [Course Website](https://frontendmasters.com/workshops/fullstack-authentication/)
+* Authentication is about validating a System's or a User's identity, Authorization is about what permissions a User has after Authentication
+* Credentials are whatever are needed to validate a user Server side
+* SSO - Sign on - more dealth with Authorization - Using the same set of credentials for the various sites that are out there
+* 2FA - By default we have 1FA - Username and Password in Login Form, Idea is we can have more like sending SMSes or Emails etc
+* MFA - Similar as 2FA but  we use multi factor authentication - Finger Prints, Face IDs etc 
+* OAuth 2.0 - More part of Authorization - How can we keep the user Logged in on websites or on other devices
+* JWT - JSON Web Token - More to do with Authorization - How a Website will give me Metadata about a user
+* There is a [WebOTP API](https://developer.mozilla.org/en-US/docs/Web/API/WebOTP_API) which can be used by JS to read OTP from SMS directly and populate in the app
+* Public Key Cryptography
+<br/>
+
+### Implementing Authentication Options
+*  Custom Authentication - Using UserName Password or using WebAuthn API for custom Authentication
+*  Identity Providers - Typically use different specs like OpenID or SAML 2.0 or "Sign in with..." Instead of us creating a DB of UserName and Passwords we use someone else' DB
+*  IDaaS - OAuth0 or Amazon, Firebase, Azure solutions for authenticating the User
+* In a  Passwordless system we save the private key in the device of the user and the public key at the server
+* Even if an attacker gets access to the Public Key it wont work without the private key
+* Private key on the device is also encrypted, it is not easily retrievable
+* Phishing will not work either, the browser will not get the Private Key if the URL is different
+* The database on the server side does not have a Password at all
+* Move to PassKeys have already started
+* Difference between <b>Webauthn</b> and <b>PasswordLess</b> or <b>PassKeys</b> is that in the first one the authentication token is saved in the device, hence getting a new device means having to reacuthenticate yourself. But in case of <b>PasswordLess</b> the token is saved in the Cloud by providers like Apple Microsoft etc
+* Passkeys will be multi device
+* On SPA's use different form names for Login and Registration so Password Managers can know that they need to save Passwords in the correc screen
+* Let the user make the Passwords Visible
+* Use autocomplete HTML arrtributes
+* Use proper accessibility and ARIA labels
+* Use ARIA-describedby
+* Use Submit Formevent and not an onClick on SPAs

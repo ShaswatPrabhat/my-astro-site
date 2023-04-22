@@ -7,6 +7,9 @@ const notes = (await Astro.glob("./notes/*.{md,mdx}")).sort(
     new Date(b.frontmatter.pubDate).valueOf() -
     new Date(a.frontmatter.pubDate).valueOf()
 );
+const nonDraftNotes = notes.filter((note) => {
+  return Object.keys(note.frontmatter).length > 0 && !note.frontmatter.draft;
+});
 ---
 
 <SiteLayout>
@@ -15,19 +18,43 @@ const notes = (await Astro.glob("./notes/*.{md,mdx}")).sort(
   <section>
     <ul>
       {
-        notes.map((note) => (
-          <li>
-            <time datetime={note.frontmatter.pubDate}>
-              {new Date(note.frontmatter.pubDate).toLocaleDateString("en-us", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </time>
-            <a href={note.url}>{note.frontmatter.title}</a>
-          </li>
-        ))
+        nonDraftNotes.map((note) => {
+          const { url, frontmatter } = note;
+          return (
+            <li>
+              <h4>
+                <a href={url}>{frontmatter.title}</a>
+              </h4>
+              <p>{frontmatter.description}</p>
+              {frontmatter.pubDate && (
+                <time datetime={frontmatter.pubDate}>
+                  {new Date(frontmatter.pubDate).toLocaleDateString("en-us", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </time>
+              )}
+            </li>
+          );
+        })
       }
     </ul>
   </section>
 </SiteLayout>
+
+<style>
+  li {
+    min-height: 7ex;
+    margin: 16px 0;
+    padding: 5px 0;
+    list-style-type: none;
+    border-width: 0.01ch;
+    border-radius: 0.5ch;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    width: fit-content;
+  }
+</style>

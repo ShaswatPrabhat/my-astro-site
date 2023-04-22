@@ -1,0 +1,24 @@
+# Notes from Steve Kinney's React Performance Course
+<br/>
+
+## Notes
+* Quick wins:
+  * Are you running the app in production mode?
+  * Use Keys for components mapped to arrays
+  * These have no downside like Memoization which means atleast one Cache query
+* Not doing stuff is faster than doing things - Component Hierarchy and state managment
+* Sometimes skipping to do some work can be better - Memoization
+* Put off doing stuff if possible - Suspense
+* Do urgent stuff now and less urgent stuff later - Transition API
+## React under the hood
+* Something changed due to `useState` or `useReducer` effects
+* Render Phase -> Commit Phase -> Clean up Phase
+* Commit Phase takes the bunch of diffs and updates the VDOM updates the Refs to DOM nodes etc
+* Clean up Phase triggers the clean up from useEffects etc
+* CSS Animations won't happen on main thread
+* Render Phase means a state change somewhere 
+* The heurestic that React uses to re-render a Child Component is whether the Parent changed
+* After that render phase we gather who is different now
+* Number of State changes are batched
+* Further we can push down the states the lesser number of rerenderings happen
+* 

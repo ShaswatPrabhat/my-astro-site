@@ -1,0 +1,30 @@
+# Notes from Rayn Carniato's React Performance Course
+<br/>
+
+## Notes
+* Solid's true win is how it changes your perspective on UI libraries
+* Components are Pure Overhead - They give modular encapsulation, but every JS framework ties their logic to Components
+* Resources: [Course Website](https://reactivity-with-solidjs.netlify.app/workshop/introduction), [Guthub course repo](https://github.com/ryansolid/solid-course), [SolidJS Docs](https://docs.solidjs.com/)
+* Reactivity: To declaratively express the relationship between values that change over time
+* If `a = b + c` then at any time in the future when `b` or `c` are updated then `a` is also updated
+* Two ways to have reactivity in JS:
+  * Fine-Grained Signals: Simple event emitters that hold a value over time
+  * Reactive Streams Rx: A series of Data events that are emitted over time
+* Signals, derivations and side effects are the only three concepts needed to understand Reactive on the UI side
+* Svelte's `let` is not JS `let`. It is a way to define a signal and the `$` indicates a derived value from that signal
+* Side Effects are also known as Autoruns, Watches, Computeds
+* This is done by and idea of `Change Tracking`.
+* All reactive variable reads are function calls
+* At runtime we intercept these functions calls
+* Proxies, Getters or Under a Compiler etc can be used to achieve this
+* Computed Values or Derivations it is both an Observer and a Signal
+* It recomputes itself only when the values of the dependencies change
+* Also knowns as Computeds or Memos
+* A ripple effect of changes
+* Can be useful to cache expensive calculations
+* What can be derived should be derived
+* A decision point in code is also supposed to be reactive
+* Tradeoffs : All updates happen asynchronously hence this was a big issue
+* React has a lot of ideas around unidirectional flows and mutability
+* Newer libraires like Solid or MobX look at our dependency graphs and do a toplogical sort so that each function is run atmost once
+* 
