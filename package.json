@@ -16,17 +16,17 @@
     "@astrojs/react": "^2.1.1",
     "@astrojs/rss": "^2.3.2",
     "@astrojs/sitemap": "^1.2.2",
-    "@astrojs/vercel": "^3.2.4",
-    "@types/react": "^18.0.38",
-    "@types/react-dom": "^18.0.11",
-    "astro": "^2.3.0",
+    "@astrojs/vercel": "^3.2.5",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "astro": "^2.3.1",
     "open-props": "^1.5.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.31.3"
   },
   "devDependencies": {
-    "prettier": "^2.8.7",
+    "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.8.0",
     "zx": "^7.2.1"
   },
