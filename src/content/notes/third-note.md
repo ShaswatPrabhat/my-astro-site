@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "Third note"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 15 2022"

@@ -1,11 +1,10 @@
 ---
-import SiteLayout from "../layouts/SiteLayout.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getCollection } from "astro:content";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+const posts = (await getCollection("blog")).sort(
   (a, b) =>
-    new Date(b.frontmatter.pubDate).valueOf() -
-    new Date(a.frontmatter.pubDate).valueOf()
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 ---
 
@@ -18,10 +17,10 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
         posts.map((post) => (
           <li>
             <h4>
-              <a href={post.url}>{post.frontmatter.title}</a>
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
             </h4>
-            <time datetime={post.frontmatter.pubDate}>
-              {new Date(post.frontmatter.pubDate).toLocaleDateString("en-us", {
+            <time datetime={post.data.pubDate}>
+              {new Date(post.data.pubDate).toLocaleDateString("en-us", {
                 year: "numeric",
                 month: "short",
                 day: "numeric",

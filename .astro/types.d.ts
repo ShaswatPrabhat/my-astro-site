@@ -111,8 +111,82 @@ declare module 'astro:content' {
 	>;
 
 	const entryMap: {
-		
+		"blog": {
+"a-gentle-introduction-to-vitest.mdx": {
+  id: "a-gentle-introduction-to-vitest.mdx",
+  slug: "a-gentle-introduction-to-vitest",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] },
+"first-post.md": {
+  id: "first-post.md",
+  slug: "first-post",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] },
+"markdown-style-guide.md": {
+  id: "markdown-style-guide.md",
+  slug: "markdown-style-guide",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] },
+"second-post.md": {
+  id: "second-post.md",
+  slug: "second-post",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] },
+"third-post.md": {
+  id: "third-post.md",
+  slug: "third-post",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] },
+"using-mdx.mdx": {
+  id: "using-mdx.mdx",
+  slug: "using-mdx",
+  body: string,
+  collection: "blog",
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] },
+},
+"notes": {
+"first-note.md": {
+  id: "first-note.md",
+  slug: "first-note",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".md"] },
+"fullstack-authentication-notes.mdx": {
+  id: "fullstack-authentication-notes.mdx",
+  slug: "fullstack-authentication-notes",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] },
+"second-note.md": {
+  id: "second-note.md",
+  slug: "second-note",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".md"] },
+"third-note.md": {
+  id: "third-note.md",
+  slug: "third-note",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".md"] },
+},
+
 	};
 
-	type ContentConfig = never;
+	type ContentConfig = typeof import("../src/content/config");
 }

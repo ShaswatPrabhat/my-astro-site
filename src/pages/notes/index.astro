@@ -1,14 +1,13 @@
 ---
-import SiteLayout from "../layouts/SiteLayout.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getCollection } from "astro:content";
 
-// Use Astro.glob() to fetch all notes, and then sort them by date.
-const notes = (await Astro.glob("./notes/*.{md,mdx}")).sort(
+const notes = (await getCollection("notes")).sort(
   (a, b) =>
-    new Date(b.frontmatter.pubDate).valueOf() -
-    new Date(a.frontmatter.pubDate).valueOf()
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 const nonDraftNotes = notes.filter((note) => {
-  return Object.keys(note.frontmatter).length > 0 && !note.frontmatter.draft;
+  return Object.keys(note.data).length > 0 && !note.data.draft;
 });
 ---
 
@@ -19,16 +18,16 @@ const nonDraftNotes = notes.filter((note) => {
     <ul>
       {
         nonDraftNotes.map((note) => {
-          const { url, frontmatter } = note;
+          const { slug, data } = note;
           return (
             <li>
               <h4>
-                <a href={url}>{frontmatter.title}</a>
+                <a href={`/notes/${slug}`}>{data.title}</a>
               </h4>
-              <p>{frontmatter.description}</p>
-              {frontmatter.pubDate && (
-                <time datetime={frontmatter.pubDate}>
-                  {new Date(frontmatter.pubDate).toLocaleDateString("en-us", {
+              <p>{data.description}</p>
+              {data.pubDate && (
+                <time datetime={data.pubDate}>
+                  {new Date(data.pubDate).toLocaleDateString("en-us", {
                     year: "numeric",
                     month: "short",
                     day: "numeric",
