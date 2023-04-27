@@ -3,8 +3,8 @@ import SiteLayout from "./SiteLayout.astro";
 import { Image } from "@astrojs/image/components";
 export interface Props {
   content: {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     pubDate?: string;
     updatedDate?: string;
     heroImage?: string;
