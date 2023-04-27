@@ -167,6 +167,7 @@ html {
   background-color: var(--surface-1);
   color: var(--text-1);
   accent-color: var(--brand);
+  scrollbar-color: var(--brand) var(--surface-1);
 }
 /*
 Uncomment the below for CSS debugging
