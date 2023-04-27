@@ -44,7 +44,7 @@ const nonDraftNotes = notes.filter((note) => {
 
 <style>
   li {
-    min-height: 7ex;
+    min-height: 150px;
     margin: 16px 0;
     padding: 5px 0;
     list-style-type: none;
@@ -52,7 +52,10 @@ const nonDraftNotes = notes.filter((note) => {
     border-radius: 0.5ch;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
   }
+
   a {
     width: fit-content;
   }
