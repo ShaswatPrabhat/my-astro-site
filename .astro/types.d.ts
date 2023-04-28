@@ -170,6 +170,34 @@ declare module 'astro:content' {
   collection: "notes",
   data: InferEntrySchema<"notes">
 } & { render(): Render[".mdx"] },
+"intermediate-css-notes.md": {
+  id: "intermediate-css-notes.md",
+  slug: "intermediate-css-notes",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".md"] },
+"intermediate-html-css-notes.mdx": {
+  id: "intermediate-html-css-notes.mdx",
+  slug: "intermediate-html-css-notes",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] },
+"intro-to-vue-notes.mdx": {
+  id: "intro-to-vue-notes.mdx",
+  slug: "intro-to-vue-notes",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] },
+"react-performance-notes.mdx": {
+  id: "react-performance-notes.mdx",
+  slug: "react-performance-notes",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] },
 "second-note.md": {
   id: "second-note.md",
   slug: "second-note",
@@ -177,6 +205,13 @@ declare module 'astro:content' {
   collection: "notes",
   data: InferEntrySchema<"notes">
 } & { render(): Render[".md"] },
+"solidjs-notes.mdx": {
+  id: "solidjs-notes.mdx",
+  slug: "solidjs-notes",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] },
 "third-note.md": {
   id: "third-note.md",
   slug: "third-note",
