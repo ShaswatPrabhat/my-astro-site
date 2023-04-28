@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [
     mdx({
       syntaxHighlight: "shiki",
-      shikiConfig: { theme: "dracula" },
+      shikiConfig: { theme: "dark-plus" },
     }),
     sitemap({
       customPages: [
