@@ -6,6 +6,10 @@ const posts = (await getCollection("blog")).sort(
   (a, b) =>
     new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
+
+const nonDraftPosts = posts.filter((post) => {
+  return Object.keys(post.data).length > 0 && !post.data.draft;
+});
 ---
 
 <SiteLayout>
@@ -14,7 +18,7 @@ const posts = (await getCollection("blog")).sort(
   <section>
     <ul>
       {
-        posts.map((post) => (
+        nonDraftPosts.map((post) => (
           <li>
             <h4>
               <a href={`/blog/${post.slug}`}>{post.data.title}</a>

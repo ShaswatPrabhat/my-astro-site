@@ -156,6 +156,13 @@ declare module 'astro:content' {
 } & { render(): Render[".mdx"] },
 },
 "notes": {
+"deep-js-notes.mdx": {
+  id: "deep-js-notes.mdx",
+  slug: "deep-js-notes",
+  body: string,
+  collection: "notes",
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] },
 "first-note.md": {
   id: "first-note.md",
   slug: "first-note",
