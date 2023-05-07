@@ -17,8 +17,18 @@ const collection = defineCollection({
     draft: z.boolean().optional(),
   }),
 });
+const tilCollection = defineCollection({
+  schema: z.object({
+    title: z.string().optional(),
+    pubDate: z.string().optional(),
+    description: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    draft: z.boolean().optional(),
+  }),
+});
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   blog: collection,
   notes: collection,
+  til: tilCollection,
 };

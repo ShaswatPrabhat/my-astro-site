@@ -1,0 +1,62 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getCollection } from "astro:content";
+
+const tils = (await getCollection("til")).sort(
+  (a, b) =>
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+const nonDraftTils = tils.filter((note) => {
+  return Object.keys(note.data).length > 0 && !note.data.draft;
+});
+---
+
+<SiteLayout>
+  <h5>Notes - Snippets, rough and loosely coupled</h5>
+  <br />
+  <section>
+    <ul>
+      {
+        nonDraftTils.map((note) => {
+          const { slug, data } = note;
+          return (
+            <li>
+              <h4>
+                <a href={`/til/${slug}`}>{data.title}</a>
+              </h4>
+              <p>{data.description}</p>
+              {data.pubDate && (
+                <time datetime={data.pubDate}>
+                  {new Date(data.pubDate).toLocaleDateString("en-us", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </time>
+              )}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</SiteLayout>
+
+<style>
+  li {
+    min-height: 150px;
+    margin: 16px 0;
+    padding: 5px 0;
+    list-style-type: none;
+    border-width: 0.01ch;
+    border-radius: 0.5ch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  a {
+    width: fit-content;
+  }
+</style>

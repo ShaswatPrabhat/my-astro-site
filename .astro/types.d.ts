@@ -227,6 +227,15 @@ declare module 'astro:content' {
   data: InferEntrySchema<"notes">
 } & { render(): Render[".md"] },
 },
+"til": {
+"html/001.mdx": {
+  id: "html/001.mdx",
+  slug: "html/001",
+  body: string,
+  collection: "til",
+  data: InferEntrySchema<"til">
+} & { render(): Render[".mdx"] },
+},
 
 	};
 

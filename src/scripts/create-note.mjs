@@ -2,7 +2,7 @@
 
 import { $, quiet, chalk } from "zx";
 
-const newFilePath = "src/pages/notes/new-note.mdx";
+const newFilePath = "src/content/notes/new-note.mdx";
 const currentDate = new Date();
 const months = [
   "Jan",
