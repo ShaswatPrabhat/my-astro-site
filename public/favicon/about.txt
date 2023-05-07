@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Atkinson Hyperlegible
+- Font Author: Copyright 2020 Braille Institute of America, Inc.
+- Font Source: http://fonts.gstatic.com/s/atkinsonhyperlegible/v11/9Bt73C1KxNDXMspQ1lPyU89-1h6ONRlW45G8WbcNcy-OZFy-FA.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
