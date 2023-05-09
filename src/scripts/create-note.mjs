@@ -26,7 +26,6 @@ let formattedDate = `${
 await quiet($`touch ${newFilePath}`);
 
 const frontMatter = `---
-layout: "../../layouts/BlogPost.astro"
 title: "New Note"
 description: "New Note created by script"
 pubDate: "${formattedDate}"

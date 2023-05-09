@@ -24,6 +24,7 @@ const tilCollection = defineCollection({
     description: z.string().optional(),
     tags: z.array(z.string()).optional(),
     draft: z.boolean().optional(),
+    source: z.string().url().optional(),
   }),
 });
 // Export a single `collections` object to register your collection(s)
