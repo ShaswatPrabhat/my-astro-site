@@ -1,21 +1,119 @@
 ---
+import { AstroComponentFactory } from "astro/dist/runtime/server";
 import BlogPost from "../../layouts/BlogPost.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
 
-import { getEntryBySlug } from "astro:content";
+import { getEntryBySlug, getCollection, CollectionEntry } from "astro:content";
+let showTaggedTils = false;
+let entry: CollectionEntry<"til"> | undefined;
+let RenderContent: AstroComponentFactory | astroHTML.JSX.IntrinsicAttributes;
+
 // 1. Get the slug from the incoming server request
 const { slug } = Astro.params;
+
+let tils = (await getCollection("til"))
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+  )
+  .filter((til) => {
+    return Object.keys(til.data).length > 0 && !til.data.draft;
+  });
+
+const uniqueTags = [...new Set(tils.map((til) => til.data.tags).flat())];
 if (slug === undefined) {
   throw new Error("Slug is required");
 }
-// 2. Query for the entry directly using the request slug
-const entry = await getEntryBySlug("til", slug);
-// 3. Redirect if the entry does not exist
-if (entry === undefined) {
-  return Astro.redirect("/404");
+if (uniqueTags.includes(slug)) {
+  showTaggedTils = true;
+  tils = tils.filter((til) => {
+    return Object.keys(til.data).length > 0 && til.data.tags?.includes(slug);
+  });
+} else {
+  // 2. Query for the entry directly using the request slug
+  entry = await getEntryBySlug("til", slug);
+  // 3. Redirect if the entry does not exist
+  if (entry === undefined) {
+    return Astro.redirect("/404");
+  }
+  const { Content } = await entry.render();
+  RenderContent = Content;
 }
-const { Content } = await entry.render();
 ---
 
-<BlogPost content={entry.data}>
-  <Content />
-</BlogPost>
+<>
+  {
+    showTaggedTils && (
+      <SiteLayout>
+        <h4 class="heading">TILs tagged under #{slug}</h4>
+
+        <section>
+          <ul>
+            {tils.map(async (til) => {
+              const {
+                data: { source, pubDate },
+                slug,
+                render,
+              } = til;
+
+              const { Content } = await render();
+              return (
+                <d>
+                  <time class="pub-date" datetime={pubDate}>
+                    {pubDate}
+                  </time>
+                  <div class="til-content">
+                    <Content />
+                    {source && (
+                      <p class="source-text">
+                        Source:
+                        <a href={source} target="_blank">
+                          {source}
+                        </a>
+                      </p>
+                    )}
+                    <a href={`/til/${slug}`}>Link to TIL Body</a>
+                  </div>
+                </d>
+              );
+            })}
+          </ul>
+        </section>
+      </SiteLayout>
+    )
+  }
+  {
+    !showTaggedTils && (
+      <BlogPost content={entry.data}>
+        <RenderContent />
+      </BlogPost>
+    )
+  }
+</>
+<style>
+  a {
+    width: fit-content;
+  }
+
+  .til-content {
+    padding: 20px 30px;
+    margin: 20px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: var(--text-2);
+  }
+
+  .pub-date {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+  .source-text {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .heading {
+    margin-bottom: 15px;
+  }
+</style>

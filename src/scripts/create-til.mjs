@@ -2,7 +2,7 @@
 
 import { $, quiet, chalk } from "zx";
 
-const dir = argv._[0].toLowerCase();
+const dir = argv._[0].toLowerCase().trim();
 const path = `src/content/til/${dir}`;
 
 if (!fs.existsSync(path)) {
@@ -52,7 +52,8 @@ title: "New TIL"
 description: "New TIL created by script"
 pubDate: "${formattedDate}"
 draft: true
-source: ""
+source: "https://www.google.com"
+tags: ["${dir}"]
 ---`;
   await quiet($`echo ${frontMatter} > ${newFilePath}`);
 } else {

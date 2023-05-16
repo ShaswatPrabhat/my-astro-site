@@ -29,8 +29,7 @@ const {
       )
     }
     <br />
-
-    <h3 class="title">{title}</h3>
+    {title && <h3 class="title">{title}</h3>}
     {
       pubDate && (
         <div class="pub-date">
