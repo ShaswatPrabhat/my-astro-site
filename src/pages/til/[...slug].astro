@@ -4,6 +4,7 @@ import BlogPost from "../../layouts/BlogPost.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 
 import { getEntryBySlug, getCollection, CollectionEntry } from "astro:content";
+import TilComponent from "../../components/TilComponent.astro";
 let showTaggedTils = false;
 let entry: CollectionEntry<"til"> | undefined;
 let RenderContent: AstroComponentFactory | astroHTML.JSX.IntrinsicAttributes;
@@ -46,37 +47,9 @@ if (uniqueTags.includes(slug)) {
     showTaggedTils && (
       <SiteLayout>
         <h4 class="heading">TILs tagged under #{slug}</h4>
-
         <section>
           <ul>
-            {tils.map(async (til) => {
-              const {
-                data: { source, pubDate },
-                slug,
-                render,
-              } = til;
-
-              const { Content } = await render();
-              return (
-                <d>
-                  <time class="pub-date" datetime={pubDate}>
-                    {pubDate}
-                  </time>
-                  <div class="til-content">
-                    <Content />
-                    {source && (
-                      <p class="source-text">
-                        Source:
-                        <a href={source} target="_blank">
-                          {source}
-                        </a>
-                      </p>
-                    )}
-                    <a href={`/til/${slug}`}>Link to TIL Body</a>
-                  </div>
-                </d>
-              );
-            })}
+            <TilComponent tils={tils} />
           </ul>
         </section>
       </SiteLayout>
@@ -91,28 +64,6 @@ if (uniqueTags.includes(slug)) {
   }
 </>
 <style>
-  a {
-    width: fit-content;
-  }
-
-  .til-content {
-    padding: 20px 30px;
-    margin: 20px;
-    border-radius: 5px;
-    border-width: 1px;
-    border-color: var(--text-2);
-  }
-
-  .pub-date {
-    font-size: 15px;
-    margin-top: 20px;
-  }
-  .source-text {
-    font-size: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
   .heading {
     margin-bottom: 15px;
   }
