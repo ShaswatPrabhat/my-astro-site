@@ -9,7 +9,12 @@ const isActive =
     Astro.url.pathname.split("/")[1] == String(href).split("/")[1]);
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a
+  onclick="navigator.vibrate(50);"
+  href={href}
+  class:list={[className, { active: isActive }]}
+  {...props}
+>
   <slot />
 </a>
 <style>
