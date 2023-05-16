@@ -1,4 +1,5 @@
 ---
+import { render } from "astro/dist/runtime/server";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -6,35 +7,44 @@ const tils = (await getCollection("til")).sort(
   (a, b) =>
     new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
-const nonDraftTils = tils.filter((note) => {
-  return Object.keys(note.data).length > 0 && !note.data.draft;
+
+const nonDraftTils = tils.filter((til) => {
+  return Object.keys(til.data).length > 0 && !til.data.draft;
 });
 ---
 
 <SiteLayout>
-  <h5>A (mostly) daily updated list of things I learn/read</h5>
-  <br />
+  <h4 class="heading">A (mostly) daily updated list of things I learn/read</h4>
+
   <section>
     <ul>
       {
-        nonDraftTils.map((note) => {
-          const { slug, data } = note;
+        nonDraftTils.map(async (nonDraftTil) => {
+          const {
+            data: { source, pubDate },
+            slug,
+            render,
+          } = nonDraftTil;
+
+          const { Content } = await render();
           return (
-            <li>
-              <h4>
-                <a href={`/til/${slug}`}>{data.title}</a>
-              </h4>
-              <p>{data.description}</p>
-              {data.pubDate && (
-                <time datetime={data.pubDate}>
-                  {new Date(data.pubDate).toLocaleDateString("en-us", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </time>
-              )}
-            </li>
+            <>
+              <time class="pub-date" datetime={pubDate}>
+                {pubDate}
+              </time>
+              <div class="til-content">
+                <Content />
+                {source && (
+                  <p class="source-text">
+                    Source:
+                    <a href={source} target="_blank">
+                      {source}
+                    </a>
+                  </p>
+                )}
+                <a href={`/til/${slug}`}>Link to TIL Body</a>
+              </div>
+            </>
           );
         })
       }
@@ -43,20 +53,29 @@ const nonDraftTils = tils.filter((note) => {
 </SiteLayout>
 
 <style>
-  li {
-    min-height: 150px;
-    margin: 16px 0;
-    padding: 5px 0;
-    list-style-type: none;
-    border-width: 0.01ch;
-    border-radius: 0.5ch;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-  }
-
   a {
     width: fit-content;
+  }
+
+  .til-content {
+    padding: 20px 30px;
+    margin: 20px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: var(--text-2);
+  }
+
+  .pub-date {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+  .source-text {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .heading {
+    margin-bottom: 15px;
   }
 </style>
