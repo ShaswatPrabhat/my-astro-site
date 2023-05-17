@@ -1,0 +1,13 @@
+---
+title: "Long Polling"
+description: "Long Polling"
+pubDate: "May 17, 2023"
+draft: false
+source: "https://ably.com/topic/long-polling"
+tags: ["http", "long polling", "websockets"]
+---
+#### Long Polling
+<br/>
+* Long polling is a technique where the server elects to hold a client’s connection open for as long as possible, delivering a response only after data becomes available or a timeout threshold has been reached.
+
+* With long polling, the client may be configured to allow for a longer timeout period (via a Keep-Alive header) when listening for a response – something that would usually be avoided seeing as the timeout period is generally used to indicate problems communicating with the server.
