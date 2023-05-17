@@ -9,4 +9,16 @@ tags: ["css"]
 #### Units in Media queries
 
 <br/>
-If your content is mostly image-based, pixels might make the most sense. If your content is mostly text-based, it probably makes more sense to use a relative unit that's based on text size, like em or ch.
+
+* If your content is mostly image-based, pixels might make the most sense. If your content is mostly text-based, it probably makes more sense to use a relative unit that's based on text size, like `em` or `ch`.
+
+* It's best to choose your breakpoints based on your content rather than popular device sizes, as those are subject to change with every technology release cycle.
+
+* You can combine media queries so that the styles only apply when all the conditions are true.
+```lang=css
+@media (min-width: 50em) and (min-height: 60em) {
+  article {
+    column-count: 2;
+  }
+}
+```
