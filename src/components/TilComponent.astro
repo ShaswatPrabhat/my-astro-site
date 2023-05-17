@@ -1,14 +1,14 @@
 ---
-const { tils } = Astro.props;
+const { tils, showTags = true } = Astro.props;
 ---
 
 {
-  tils.map(async (nonDraftTil) => {
+  tils.map(async (til) => {
     const {
-      data: { source, pubDate },
+      data: { source, pubDate, tags },
       slug,
       render,
-    } = nonDraftTil;
+    } = til;
 
     const { Content } = await render();
     return (
@@ -26,7 +26,18 @@ const { tils } = Astro.props;
               </a>
             </p>
           )}
-          <a href={`/til/${slug}`}>Link to TIL Body</a>
+          <a class="link-to-til" href={`/til/${slug}`}>
+            Link to TIL
+          </a>
+          {showTags &&
+            tags &&
+            tags.map((tag) => {
+              return (
+                <a class="tag" href={`/til/${tag}`}>
+                  #{tag}
+                </a>
+              );
+            })}
         </div>
       </>
     );
@@ -38,6 +49,15 @@ const { tils } = Astro.props;
     width: fit-content;
   }
 
+  .tag {
+    margin-left: 10px;
+    background-color: ;
+  }
+  .link-to-til {
+    margin-right: 16px;
+    font-size: 24px;
+    font-weight: 500;
+  }
   .til-content {
     padding: 20px 30px;
     margin: 20px;
@@ -50,8 +70,9 @@ const { tils } = Astro.props;
     font-size: 15px;
     margin-top: 20px;
   }
+
   .source-text {
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
   }

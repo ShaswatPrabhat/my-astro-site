@@ -12,6 +12,10 @@ let RenderContent: AstroComponentFactory | astroHTML.JSX.IntrinsicAttributes;
 // 1. Get the slug from the incoming server request
 const { slug } = Astro.params;
 
+if (slug === undefined) {
+  throw new Error("Slug is required");
+}
+
 let tils = (await getCollection("til"))
   .sort(
     (a, b) =>
@@ -22,9 +26,6 @@ let tils = (await getCollection("til"))
   });
 
 const uniqueTags = [...new Set(tils.map((til) => til.data.tags).flat())];
-if (slug === undefined) {
-  throw new Error("Slug is required");
-}
 if (uniqueTags.includes(slug)) {
   showTaggedTils = true;
   tils = tils.filter((til) => {
@@ -46,10 +47,13 @@ if (uniqueTags.includes(slug)) {
   {
     showTaggedTils && (
       <SiteLayout>
-        <h4 class="heading">TILs tagged under #{slug}</h4>
+        <h4 class="heading">
+          TILs tagged under
+          <span class="slug">#{slug}</span>
+        </h4>
         <section>
           <ul>
-            <TilComponent tils={tils} />
+            <TilComponent tils={tils} showTags={false} />
           </ul>
         </section>
       </SiteLayout>
@@ -66,5 +70,8 @@ if (uniqueTags.includes(slug)) {
 <style>
   .heading {
     margin-bottom: 15px;
+  }
+  .slug {
+    color: var(--brand);
   }
 </style>

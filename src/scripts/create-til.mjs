@@ -17,10 +17,16 @@ console.log(chalk.green(`Creating the new TIL file now`));
 const currentDate = new Date();
 let dd = currentDate.getDate();
 let mm = currentDate.getMonth();
-const yyyy = currentDate.getFullYear();
+let hh = currentDate.getHours();
+let MM = currentDate.getMinutes();
+let ss = currentDate.getSeconds();
+let yyyy = currentDate.getFullYear();
 if (dd < 10) dd = "0" + dd;
 if (mm < 10) mm = "0" + mm;
-const formattedDate = `${dd}_${mm}_${yyyy}`;
+if (hh < 10) hh = "0" + hh;
+if (MM < 10) MM = "0" + MM;
+if (ss < 10) ss = "0" + ss;
+const formattedDate = `${dd}_${mm}_${yyyy}_${hh}_${MM}_${ss}`;
 const newFilePath = `${path}/${formattedDate}.mdx`;
 
 if (!fs.existsSync(newFilePath)) {
