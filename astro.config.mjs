@@ -18,6 +18,7 @@ export default defineConfig({
         "https://shaswat.vercel.app/about",
         "https://shaswat.vercel.app/notes",
         "https://shaswat.vercel.app/library",
+        "https://shaswat.vercel.app/til",
       ],
     }),
     image({
