@@ -228,6 +228,13 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] },
 },
 "til": {
+"css/1.mdx": {
+  id: "css/1.mdx",
+  slug: "css/1",
+  body: string,
+  collection: "til",
+  data: InferEntrySchema<"til">
+} & { render(): Render[".mdx"] },
 },
 
 	};
