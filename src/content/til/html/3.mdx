@@ -1,0 +1,15 @@
+---
+title: "So, how do you actually build a lean, efficient site in 2023?"
+description: "So, how do you actually build a lean, efficient site in 2023?"
+pubDate: "May 19, 2023"
+draft: false
+source: "https://gomakethings.com/how-to-build-lean-efficient-websites-in-2023/"
+tags: ["html", "astro","11ty","js"]
+---
+#### So, how do you actually build a lean, efficient site in 2023?
+<br/>
+* Start with mostly static HTML. If you’re building a blog or a marketing site or something like that, your journey can often stop here. Grab a tool like 11ty or Hugo and you’re good to go!
+    
+* Progressively enhance the dynamic parts. Have some API-driven content? Static-site generators can fetch that for you, too. But if it’s user-dependent or has to run in the browser, use JavaScript for just the parts that require it.
+    
+* Pick small, focused tools. Is your dynamic content rendered once and then done? Just use vanilla JavaScript. Does it get updated with user interactions? Grab a smaller state-based UI library like Preact or Solid instead of one of the big monolithic tools.
