@@ -264,6 +264,13 @@ declare module 'astro:content' {
   collection: "notes";
   data: InferEntrySchema<"notes">
 } & { render(): Render[".mdx"] };
+"html-web-dev.mdx": {
+	id: "html-web-dev.mdx";
+  slug: "html-web-dev";
+  body: string;
+  collection: "notes";
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] };
 "intermediate-css-notes.md": {
 	id: "intermediate-css-notes.md";
   slug: "intermediate-css-notes";
