@@ -1,0 +1,28 @@
+---
+title: "Introduction to HTML from Web Dev"
+description: "Notes from Introduction to HTML from Web Dev"
+pubDate: "May 20, 2023"
+draft: false
+---
+* [Course Website](https://web.dev/learn/html/)
+
+* Elements and tags aren't the exact same thing, though many people use the terms interchangeably. The tag name is the content in the brackets. The tag includes the brackets. In this case, `<h1>`. An "element" is the opening and closing tags, and all the content between those tags, including nested elements.
+```html
+<p>This paragraph has some
+  <strong><em>strongly emphasized</em></strong>
+  content</p>
+```
+
+* The semantics, or role, of an element is important to assistive technologies and, in some cases, search engines. 
+  
+* HTML should be used to structure content, not to define the content's appearance. Appearance is the realm of CSS.
+
+* JavaScript is not only [render-blocking](https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources/), but the browser stops downloading all assets when scripts are downloaded and doesn't resume downloading other assets until the JavaScript is executed. For this reason, you will often find JavaScript requests at the end of the document rather than in the head.
+
+* There are two attributes that can reduce the blocking nature of JavaScript download and execution: `defer` and `async`. With `defer`, HTML rendering is not blocked during the download, and the JavaScript only executes after the document has otherwise finished rendering. With `async`, rendering isn't blocked during the download either, but once the script has finished downloading, the rendering is paused while the JavaScript is executed. 
+<br/>
+ 
+<img
+    loading="lazy"
+    src="https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/bMpXQsshdEYqlmwV2wBW.png?auto=format&w=1600" />
+<br/>
