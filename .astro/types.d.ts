@@ -299,6 +299,13 @@ declare module 'astro:content' {
   collection: "notes";
   data: InferEntrySchema<"notes">
 } & { render(): Render[".mdx"] };
+"rsc.mdx": {
+	id: "rsc.mdx";
+  slug: "rsc";
+  body: string;
+  collection: "notes";
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] };
 "second-note.md": {
 	id: "second-note.md";
   slug: "second-note";
@@ -325,6 +332,13 @@ declare module 'astro:content' {
 "css/1.mdx": {
 	id: "css/1.mdx";
   slug: "css/1";
+  body: string;
+  collection: "til";
+  data: InferEntrySchema<"til">
+} & { render(): Render[".mdx"] };
+"firebase/4.mdx": {
+	id: "firebase/4.mdx";
+  slug: "firebase/4";
   body: string;
   collection: "til";
   data: InferEntrySchema<"til">

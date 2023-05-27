@@ -1,0 +1,37 @@
+---
+title: "Firebase at scale"
+description: "How Firebase scaled up to deliver messages diring world cup season"
+pubDate: "May 27, 2023"
+draft: false
+source: "https://firebase.blog/posts/2023/05/cloud-messaging-world-cup-scale"
+tags: ["firebase","scale", "load balancing"]
+---
+#### How Firebase scaled up to deliver messages diring world cup season
+
+* The type of traffic for such events can be extremely spiky. A very steady traffic volume can suddenly spike when Mbappe scores the goal that ties the game. 
+
+* Understanding the traffic:
+
+* * Where the traffic is coming from and where it needs to go.
+* * The different byte sizes of requests.
+* * How many users to deliver traffic to and what the per-user traffic pattern will be.
+* * Expected QPS fluctuations throughout events. 
+* * Whether there will be concurrent events.
+
+<br/>
+* In the case of the World Cup, past competition figures combined with predicted organic growth helped us make a good prediction of the type of traffic and load we could expect.
+
+
+* To shed some light on the scale of the 2022 World Cup, we delivered over 115B notifications to over 400M users across the globe. During the Argentina - France kick-off, we reached a peak of 46M QPS from our average baseline of 18M <i>in a matter of seconds.</i>
+
+* [Cold Potato Routing](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) - whenever feasible, try to provision infrastructure as close as possible to the source and destination of the traffic, so you can get requests in and out of your system more quickly while controlling the `QoS` and `latencies` in between. 
+<br/>
+<img src="https://firebasestorage.googleapis.com/v0/b/first-class-blog.appspot.com/o/svg%2Fworld-cup-2.svg?alt=media" alt="Visualization of Cloud Potato Routing"/>
+<br/>
+* Always provision infrastructure in a redundant manner between clusters that share no dependencies 
+
+* Try also to provision in new cloud domains from the ones you’re currently in. 
+
+* Load Balancing - Isolated Infra - If the `URL` for the new traffic is known upfront, try and provision new Infra just for those new `URL's`
+
+* Sometimes, isolating the traffic entry point to your system will be sufficient.
