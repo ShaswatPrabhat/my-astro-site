@@ -1,0 +1,69 @@
+---
+title: "Notes dump for Express"
+description: "Let's learn ExpressJS"
+pubDate: "Jun 2, 2023"
+draft: false
+---
+* To serve static files such as images, CSS files, and JavaScript files, use the `express.static` built-in middleware function in Express.
+  ```js
+  app.use(express.static('public'))
+  ```
+*  Express looks up the files relative to the static directory, so the name of the static directory is not part of the URL. Say for above:
+  ```
+    http://localhost:3000/images/kitten.jpg
+    http://localhost:3000/css/style.css
+    http://localhost:3000/js/app.js
+    http://localhost:3000/images/bg.png
+    http://localhost:3000/hello.html
+```
+* The path that you provide to the express.static function is relative to the directory from where you launch your node process.
+* Synchronous functions and methods tie up the executing process until they return. A single call to a synchronous function might return in a few microseconds or milliseconds, however in high-traffic websites, these calls add up and reduce the performance of the app. Avoid their use in production.
+* Although Node and many modules provide synchronous and asynchronous versions of their functions, always use the asynchronous version in production. The only time when a synchronous function can be justified is upon initial startup.
+* `console.log()` or `console.err()` are synchronous when the destination is a terminal or a file hence not very usable in production.
+* If you’re logging app activity (for example, tracking traffic or API calls), instead of using console.log(), use a logging library like [Winston](https://www.npmjs.com/package/winston) or [Bunyan](https://www.npmjs.com/package/bunyan).
+* Node uses an `error-first callback` convention for returning errors from asynchronous functions, where the first parameter to the callback function is the error object, followed by result data in succeeding parameters. 
+* Adding an event listener for uncaughtException will change the default behavior of the process that is encountering an exception; the process will continue to run despite the exception. 
+* Continuing to run the app after an uncaught exception is a dangerous practice and is not recommended
+* This is why we recommend things like multiple processes and supervisors: crashing and restarting is often the most reliable way to recover from an error.
+* The wrap() function is a wrapper that catches rejected promises and calls next() with the error as the first argument.
+    ```js
+    const wrap = fn => (...args) => fn(...args).catch(args[2])
+
+    app.get('/', wrap(async (req, res, next) => {
+    const company = await getCompanyById(req.query.id)
+    const stream = getLogoStreamById(company.id)
+    stream.on('error', next).pipe(res)
+    }))
+
+    ```
+* The routing methods can have more than one callback function as arguments. With multiple callback functions, it is important to provide `next` as an argument to the callback function and then `call next()` within the body of the function to hand off control to the next callback.
+* Query strings are not part of the route path.
+* To define routes with route parameters, simply specify the route parameters in the path of the route as shown below.
+    ```js
+    app.get('/users/:userId/books/:bookId', (req, res) => {
+        res.send(req.params)
+    })
+    ```
+* More than one callback function can handle a route (make sure you specify the next object). For example:
+    ```js
+    app.get('/example/b', (req, res, next) => {
+    console.log('the response will be sent by the next function ...')
+    next()
+    }, (req, res) => {
+    res.send('Hello from B!')
+    })
+    ```
+* If you need your middleware to be configurable, export a function which accepts an options object or other parameters, which, then returns the middleware implementation based on the input parameters.
+  ```js
+    module.exports = function (options) {
+    return function (req, res, next) {
+        // Implement the middleware function based on the options object
+        next()
+    }
+    }
+
+    const mw = require('./my-middleware.js')
+
+    app.use(mw({ option1: '1', option2: '2' }))
+
+    ```

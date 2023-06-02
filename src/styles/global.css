@@ -258,3 +258,8 @@ a::before {
   padding: 20px;
   font-size: var(--font-size-3);
 }
+:where(li) {
+  max-inline-size: unset;
+  margin-bottom: 3px;
+  font-size: var(--font-size-3);
+}

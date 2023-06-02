@@ -250,6 +250,13 @@ declare module 'astro:content' {
   collection: "notes";
   data: InferEntrySchema<"notes">
 } & { render(): Render[".mdx"] };
+"express-notes.mdx": {
+	id: "express-notes.mdx";
+  slug: "express-notes";
+  body: string;
+  collection: "notes";
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] };
 "first-note.md": {
 	id: "first-note.md";
   slug: "first-note";
