@@ -67,3 +67,72 @@ draft: false
     app.use(mw({ option1: '1', option2: '2' }))
 
     ```
+* To skip the rest of the middleware functions from a router middleware stack, call `next('route')` to pass control to the next route.
+* Router-level middleware works in the same way as application-level middleware, except it is bound to an instance of `express.Router()`.
+* Error-handling middleware always takes four arguments. You must provide four arguments to identify it as an error-handling middleware function. Even if you don’t need to use the `next` object, you must specify it to maintain the signature.
+* For errors returned from asynchronous functions invoked by route handlers and middleware, you must pass them to the next() function, where Express will catch and process them. For example:
+  ```js
+    app.get('/', (req, res, next) => {
+      fs.readFile('/file-does-not-exist', (err, data) => {
+        if (err) {
+          next(err) // Pass errors to Express.
+        } else {
+          res.send(data)
+        }
+      })
+    })
+  ```
+* If you pass anything to the `next()` function (except the string `'route'`), Express regards the current request as being an error and will skip any remaining non-error handling routing and middleware functions.
+* When an error is written, the following information is added to the response:
+  * The `res.statusCode` is set from `err.status` (or `err.statusCode`). If this value is outside the `4xx` or `5xx` range, it will be set to `500`.
+  * The `res.statusMessag`e is set according to the status code.
+  * The body will be the HTML of the status code message when in production environment, otherwise will be `err.stack`.
+  * Any headers specified in an `err.headers` object.
+* Notice that when not calling “next” in an error-handling function, you are responsible for writing (and ending) the response. Otherwise those requests will `hang` and will not be eligible for **garbage collection**.
+  ```js
+    function clientErrorHandler (err, req, res, next) {
+      if (req.xhr) {
+        res.status(500).send({ error: 'Something failed!' })
+      } else {
+        next(err)
+      }
+    }
+  ```
+* A `Systemd` service file can be used to restart the node server everytime it crashes:
+  ```sh
+    # /etc/systemd/system/nodeserver.service
+    [Unit]
+    Description=Node.js Example Server
+    #Requires=After=mysql.service       
+    # Requires the mysql service to run first
+
+    [Service]
+    ExecStart=/usr/local/bin/node /opt/nodeserver/server.js
+    # Required on some systems
+    #WorkingDirectory=/opt/nodeserver
+    Restart=always
+    # Restart service after 10 seconds if node service crashes
+    RestartSec=10
+    # Output to syslog
+    StandardOutput=syslog
+    StandardError=syslog
+    SyslogIdentifier=nodejs-example
+    #User=<alternate user>
+    #Group=<alternate group>
+    Environment=NODE_ENV=production PORT=1337
+
+    [Install]
+    WantedBy=multi-user.target
+
+  ```
+* The following illustrates programmatically what `Node` does on your behalf when an uncaught exception occurs:
+  ```js
+  process.on('uncaughtException', function (er) {
+    console.error(er.stack)
+    process.exit(1)
+  })
+  ```
+  You can override this behavior by adding an `uncaughtException` handler on the `process` object. 
+* An `uncaughtException handler` should be treated as a last opportunity to say your goodbyes before calling process.exit. It is not advised to keep the process running.
+* 
+  
