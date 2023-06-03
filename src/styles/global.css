@@ -175,6 +175,7 @@ html {
   width: 4px;
   border-radius: 2px;
   border-width: 2px;
+  color: var(--brand) var(--surface-1);
 }
 
 ::-webkit-scrollbar-thumb {
