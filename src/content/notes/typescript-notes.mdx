@@ -66,4 +66,77 @@ draft: false
   Even though the parameter `s` didn't have a type annotation, TypeScript used the types of the `forEach` function, along with the `inferred` type of the array, to determine the type `s` will have.
 
   This process is called `contextual typing` because the `context` that the function occurred within informs what type it should have.
-* 
+* Object types can also specify that some or all of their properties are optional. To do this, add a ? after the property name:
+  ```ts
+    function printName(obj: { first: string; last?: string }) {
+      // ...
+    }
+    // Both OK
+    printName({ first: "Bob" });
+    printName({ first: "Alice", last: "Alisson" });
+  ```
+* A union type is a type formed from two or more other types, representing values that may be <b><u>any one of</u></b> those types. 
+* TypeScript will only allow an operation if it is valid for every member of the union. For example, if you have the union `string | number`, you can’t use methods that are only available on string:
+  ```ts
+  function printId(id: number | string) {
+    console.log(id.toUpperCase());
+    // Property 'toUpperCase' does not exist on type 'string | number'.
+    // Property 'toUpperCase' does not exist on type 'number'.
+  }
+  ```
+* Type aliases and interfaces are very similar, and in many cases you can choose between them freely. Almost all features of an interface are available in type, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
+  ```ts
+  // Extending an interface
+
+  interface Animal {
+    name: string;
+  }
+
+  interface Bear extends Animal {
+    honey: boolean;
+  }
+
+  const bear = getBear();
+  bear.name;
+  bear.honey;
+        
+  // Extending a type via intersections
+  type Animal = {
+    name: string;
+  }
+
+  type Bear = Animal & { 
+    honey: boolean;
+  }
+
+  const bear = getBear();
+  bear.name;
+  bear.honey;
+  ```
+* You can use a type assertion to specify a more specific type:
+  ```ts
+  const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+  ```
+* You can also use the angle-bracket syntax (except if the code is in a .tsx file), which is equivalent:
+  ```ts
+  const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+  ```
+* By themselves, literal types aren’t very valuable:
+  ```ts
+  let x: "hello" = "hello";
+  // OK
+  x = "hello";
+  // ...
+  x = "howdy";
+  // Type '"howdy"' is not assignable to type '"hello"'.
+  ```
+  It’s not much use to have a variable that can only have one value!
+  But by combining literals into unions, you can express a much more useful concept - for example, functions that only accept a certain set of known values:
+  ```ts
+  function printText(s: string, alignment: "left" | "right" | "center") {
+  // ...
+  }
+  printText("Hello, world", "left");
+  printText("G'day, mate", "centre");
+  // Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.
+  ```
