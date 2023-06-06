@@ -1,0 +1,69 @@
+---
+title: "TypeScript Notes"
+description: "Dump of Notes for TypeScript"
+pubDate: "Jun 5, 2023"
+draft: false
+---
+* Your existing working JavaScript code is also TypeScript code.
+* TypeScript knows the JavaScript language and will generate/infer types for you in many cases.
+  ```ts
+  let helloWorld = "Hello World";
+  ```
+* You can explicitly describe this object’s shape using an interface declaration:
+  ```ts
+    interface User {
+        name: string;
+        id: number;
+    }
+  ```
+* You should prefer `interface`. Use `type` when you need specific features.
+* Generics provide variables to type: 
+  ```typescript
+    type StringArray = Array<string>;
+    type NumberArray = Array<number>;
+    type ObjectWithNameArray = Array<{ name: string }>;
+  ```
+* [Sample Generics](https://www.typescriptlang.org/play?#code/PTAEAEFMCdoe2gZwFygEwGYAsBWAUAJYB2ALjAGYCGAxpKAEI0DWADswDwAqAni5AHygA3nlChKAEwmoAFHABGAK1Q8+ASlABeQQDc4BCQG5RoAOaQSsjdtCrIxgL548IWwAsCiUABtidT+KgiG4IJNQAriSgJHDRkN7etryQAMrU0AQsUSRuMP5elC5g1HBEiCSUpKDUlAmQEqAABvLMbNRMjQA04kQNMaBEcFEA7gjQ3OLycJGgw7nQ-lE1ALZ05PDLAHR4EpDU3pQL1aXloC3tbUyojBcc5RlEpvzGRaAKintRAZRBJA+m3Xke0o4UQdGGdF2+0O9VABCilCmOjolC8OToOkOBER3jobGgUTg5AYrWY2xKZUJSk+WjOpPam3MJBkaherhSxFo0VydNu7VAmIyOPygXuxABoG402qlQA5FE2IgCgNwssgdBorF0eIpKByOEiNQSARSttzqwyZIJDJMKygA)
+* One of TypeScript’s core principles is that type checking focuses on the shape that `value`s have. This is sometimes called `duck typing` or `structural typing`.
+* There is no difference between how classes and objects conform to shapes:
+  ```ts
+    class VirtualPoint {
+        x: number;
+        y: number;
+
+        constructor(x: number, y: number) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    const newVPoint = new VirtualPoint(13, 56);
+    logPoint(newVPoint); // logs "13, 56"
+  ```
+* TypeScript act a bit more strictly. In that case, you can use the `noEmitOnError` compiler option. 
+* That’s why TypeScript needs a compiler in the first place - it needs some way to strip out or transform any TypeScript-specific code so that you can run it. 
+* Using any often defeats the purpose of using TypeScript in the first place. The more typed your program is, the more validation and tooling you’ll get.
+* Turning on the `noImplicitAny` flag will issue an error on any variables whose type is implicitly inferred as any.
+* The type names `String`, `Number`, and `Boolean` (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. Always use `string`, `number`, or `boolean` for types.
+* To specify the type of an array like `[1, 2, 3]`, you can use the syntax `number[]`.
+* Note that `[number]` is a different thing; refer to the section on `Tuples`.
+* When you don’t specify a type, and TypeScript can’t infer it from context, the compiler will typically default to `any`. Because `any` isn’t type-checked. Use the compiler flag `noImplicitAny` to flag any implicit `any` as an error.
+* TypeScript doesn’t use <i>types on the left</i> style declarations like `int x = 0;` Type annotations will always go after the thing being typed.
+* ```ts
+    const names = ["Alice", "Bob", "Eve"];
+    
+    // Contextual typing for function - parameter s inferred to have type string
+    names.forEach(function (s) {
+      console.log(s.toUpperCase());
+    });
+    
+    // Contextual typing also applies to arrow functions
+    names.forEach((s) => {
+      console.log(s.toUpperCase());
+    });
+  ```
+  
+  Even though the parameter `s` didn't have a type annotation, TypeScript used the types of the `forEach` function, along with the `inferred` type of the array, to determine the type `s` will have.
+
+  This process is called `contextual typing` because the `context` that the function occurred within informs what type it should have.
+* 

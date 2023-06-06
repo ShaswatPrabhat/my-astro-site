@@ -327,6 +327,13 @@ declare module 'astro:content' {
   collection: "notes";
   data: InferEntrySchema<"notes">
 } & { render(): Render[".mdx"] };
+"system-design.mdx": {
+	id: "system-design.mdx";
+  slug: "system-design";
+  body: string;
+  collection: "notes";
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] };
 "third-note.md": {
 	id: "third-note.md";
   slug: "third-note";
@@ -334,6 +341,13 @@ declare module 'astro:content' {
   collection: "notes";
   data: InferEntrySchema<"notes">
 } & { render(): Render[".md"] };
+"typescript-notes.mdx": {
+	id: "typescript-notes.mdx";
+  slug: "typescript-notes";
+  body: string;
+  collection: "notes";
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] };
 };
 "til": {
 "css/1.mdx": {
