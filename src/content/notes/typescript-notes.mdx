@@ -140,3 +140,14 @@ draft: false
   printText("G'day, mate", "centre");
   // Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.
   ```
+* TypeScript also has a special syntax for removing null and undefined from a type without doing any explicit checking. Writing`!` after any expression is effectively a type assertion that the value isn’t null or undefined:
+  ```ts
+  function liveDangerously(x?: number | null) {
+    // No error
+    console.log(x!.toFixed());
+  }
+  ```
+* <u>Arrays are object types in JavaScript.</u>
+* But it turns out that in JavaScript, `typeof null` is actually `"object"`!
+* For methods, note that the parameter name is required. The function type `(string) => void` means <u>a function with a parameter named `string` of type `any`!</u>
+*  

@@ -2,10 +2,11 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import vercelServerless from "@astrojs/vercel/serverless";
-import image from "@astrojs/image";
+// import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: { assets: true },
   site: "https://shaswat.vercel.app/",
   integrations: [
     mdx({
@@ -21,9 +22,9 @@ export default defineConfig({
         "https://shaswat.vercel.app/til",
       ],
     }),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
+    // image({
+    //   serviceEntryPoint: "@astrojs/image/sharp",
+    // }),
   ],
   output: "server",
   adapter: vercelServerless(),
