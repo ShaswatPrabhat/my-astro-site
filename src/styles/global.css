@@ -264,3 +264,8 @@ a::before {
   margin-bottom: 3px;
   font-size: var(--font-size-3);
 }
+:where(:not(pre) > code) {
+  background-color: var(--brand);
+  color: var(--surface-1);
+  font-size: var(--font-size-3);
+}
