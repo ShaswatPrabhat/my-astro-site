@@ -15,6 +15,7 @@ const collection = defineCollection({
       .optional(),
     tags: z.array(z.string()).optional(),
     draft: z.boolean().optional(),
+    heroImage: z.string().optional(),
   }),
 });
 const tilCollection = defineCollection({

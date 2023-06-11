@@ -1,0 +1,14 @@
+---
+title: "Deep React"
+description: "Notes on React Deepdives"
+pubDate: "Jun 11, 2023"
+heroImage: "/react-logo.gif"
+draft: false
+---
+* Either wrap a method dependecy in a `useCallback` or move the method within the body of the effect:
+  ![useCallback removal of method deps](./useCallback1.png)
+* If you’re writing a `custom Hook`, <u>it’s recommended to wrap any functions that it returns into `useCallback`.</u> This ensures that the consumers of your Hook can optimize their own code when needed.
+* If you forget the dependency array, `useCallback` will return a new function every time.
+* The `context` from a `useContext` itself does not hold the information, it only represents the kind of information you can provide or read from components.
+* React automatically re-renders components that read some context if it changes.
+* 

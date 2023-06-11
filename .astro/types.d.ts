@@ -299,6 +299,13 @@ declare module 'astro:content' {
   collection: "notes";
   data: InferEntrySchema<"notes">
 } & { render(): Render[".mdx"] };
+"react-deep-dive.mdx": {
+	id: "react-deep-dive.mdx";
+  slug: "react-deep-dive";
+  body: string;
+  collection: "notes";
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] };
 "react-performance-notes.mdx": {
 	id: "react-performance-notes.mdx";
   slug: "react-performance-notes";
