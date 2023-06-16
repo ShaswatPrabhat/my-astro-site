@@ -30,4 +30,35 @@ draft: false
 * <u>You don’t need Effects to transform data for rendering.</u> For example, let’s say you want to filter a list before displaying it. You might feel tempted to write an Effect that updates a state variable when the list changes. However, this is inefficient. When you update the state, React will first call your component functions to calculate what should be on the screen. Then React will “commit” these changes to the DOM, updating the screen. Then React will run your Effects. If your Effect also immediately updates the state, this restarts the whole process from scratch! To avoid the unnecessary render passes, transform all the data at the top level of your components. That code will automatically re-run whenever your props or state change.
 * <u>You don’t need Effects to handle user events.</u> For example, let’s say you want to send an `/api/buy POST` request and show a notification when the user buys a product. In the Buy button click event handler, you know exactly what happened. By the time an Effect runs, you don’t know what the user did (for example, which button was clicked). This is why you’ll usually handle user events in the corresponding event handlers.
 * When something can be calculated from the existing props or state, don’t put it in state. Instead, calculate it during rendering.
-* 
+* Try to write every `Effect` as an independent process and think about a single setup/cleanup cycle at a time. It shouldn’t matter whether your component is mounting, updating, or unmounting. When your cleanup logic correctly “mirrors” the setup logic, your `Effect` is resilient to running setup and cleanup as often as needed.
+* <u>If you’re not connecting to any external system, you probably don’t need an Effect.</u>
+* Effects are an <u>escape hatch</u>: you use them when you need to <i>step outside React<i> and when there is no better built-in solution for your use case.
+* Downsides of `effects` to `fetch` data:
+  * The run only on server: This means the Server rendered app will not have the data and hence will need to run the full JS on Client side again
+  * Fetching directly in Effects makes it easy to create `network waterfalls`.
+  * Fetching directly in Effects usually means you don’t preload or cache data. For example, if the component unmounts and then mounts again, it would have to fetch the data again.
+* You can’t “choose” the dependencies of your Effect. Every reactive value used by your Effect’s code must be declared as a dependency.
+* Using `updater methods` while setting state removes the inifinite render cycle:
+  <br/>
+  <iframe src="https://codesandbox.io/embed/hopeful-tharp-m5cpnj?fontsize=14&hidenavigation=1&initialpath=App.js&module=%2FApp.js&theme=dark&view=editor"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="hopeful-tharp-m5cpnj"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+* Avoid using a function or an object created during rendering as a dependency. Instead, declare it inside the Effect.
+* `Effect Events` are not reactive and must always be omitted from dependencies of your `Effect`:
+  ```js
+  function Page({ url, shoppingCart }) {
+  const onVisit = useEffectEvent(visitedUrl => {
+    logVisit(visitedUrl, shoppingCart.length)
+  });
+
+  useEffect(() => {
+    onVisit(url);
+  }, [url]); // ✅ All dependencies declared
+  // ...
+}
+  ```
+* This is what lets you put <u>non-reactive</u> code (where you can read the latest value of some props and state) inside of them.
+* If you have cleanup code without corresponding setup code, it’s usually a code smell.
