@@ -7,10 +7,10 @@ settings:
 dependencies:
   '@astrojs/image':
     specifier: ^0.16.9
-    version: 0.16.9(astro@2.6.3)(sharp@0.31.3)
+    version: 0.16.9(astro@2.6.4)(sharp@0.31.3)
   '@astrojs/mdx':
     specifier: ^0.19.7
-    version: 0.19.7(astro@2.6.3)
+    version: 0.19.7(astro@2.6.4)
   '@astrojs/rss':
     specifier: ^2.4.3
     version: 2.4.3
@@ -19,13 +19,13 @@ dependencies:
     version: 1.3.3
   '@astrojs/vercel':
     specifier: ^3.5.0
-    version: 3.5.0(astro@2.6.3)(react@18.2.0)
+    version: 3.5.0(astro@2.6.4)(react@18.2.0)
   astro:
-    specifier: ^2.6.3
-    version: 2.6.3(sharp@0.31.3)
+    specifier: ^2.6.4
+    version: 2.6.4(sharp@0.31.3)
   open-props:
-    specifier: ^1.5.8
-    version: 1.5.8
+    specifier: ^1.5.9
+    version: 1.5.9
   sharp:
     specifier: ^0.31.3
     version: 0.31.3
@@ -61,7 +61,7 @@ packages:
   /@astrojs/compiler@1.5.1:
     resolution: {integrity: sha512-iIGKu/uzB8sJ5VveQf0eHrVPPFEcrvSlp4qShYMOuY2aMmK2RVXQlX9dUjtmBQ+NAokfIOb7fwCutvH+p13l+g==}
 
-  /@astrojs/image@0.16.9(astro@2.6.3)(sharp@0.31.3):
+  /@astrojs/image@0.16.9(astro@2.6.4)(sharp@0.31.3):
     resolution: {integrity: sha512-8RfGGd1MAIQ6xCHgmu+xXBKWE14gvWYcIv61PxWlToEBgMUbmFdN5ICBQ1bea24rx6o5WvsvRjfOnkjPpf2eew==}
     peerDependencies:
       astro: ^2.5.0
@@ -71,7 +71,7 @@ packages:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
-      astro: 2.6.3(sharp@0.31.3)
+      astro: 2.6.4(sharp@0.31.3)
       http-cache-semantics: 4.1.1
       image-size: 1.0.2
       kleur: 4.1.5
@@ -103,13 +103,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark@2.2.1(astro@2.6.3):
+  /@astrojs/markdown-remark@2.2.1(astro@2.6.4):
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.6.3(sharp@0.31.3)
+      astro: 2.6.4(sharp@0.31.3)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -126,11 +126,11 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@0.19.7(astro@2.6.3):
+  /@astrojs/mdx@0.19.7(astro@2.6.4):
     resolution: {integrity: sha512-mfEbBD7oi8yBHhcJucEjnrquREkJ3os+jioURP8BR2B8tOV2rV2j8trvmLUgfS+P/+HevGObxCTjcRYxn6T7eg==}
     engines: {node: '>=16.12.0'}
     dependencies:
-      '@astrojs/markdown-remark': 2.2.1(astro@2.6.3)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.6.4)
       '@astrojs/prism': 2.1.2
       '@mdx-js/mdx': 2.3.0
       acorn: 8.8.2
@@ -190,7 +190,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel@3.5.0(astro@2.6.3)(react@18.2.0):
+  /@astrojs/vercel@3.5.0(astro@2.6.4)(react@18.2.0):
     resolution: {integrity: sha512-2uhwcY6fwgLZVlk13jgz6oN4pY6N1DDQZXeMwkcohVyGPbnToFxpjTnhI19neq0r9eA0aA7oHqY1oG6quV9/Og==}
     peerDependencies:
       astro: ^2.6.0
@@ -199,7 +199,7 @@ packages:
       '@astrojs/webapi': 2.2.0
       '@vercel/analytics': 0.1.11(react@18.2.0)
       '@vercel/nft': 0.22.6
-      astro: 2.6.3(sharp@0.31.3)
+      astro: 2.6.4(sharp@0.31.3)
       esbuild: 0.17.19
       fast-glob: 3.2.12
       set-cookie-parser: 2.6.0
@@ -277,7 +277,7 @@ packages:
       '@babel/compat-data': 7.22.5
       '@babel/core': 7.22.5
       '@babel/helper-validator-option': 7.22.5
-      browserslist: 4.21.7
+      browserslist: 4.21.9
       lru-cache: 5.1.1
       semver: 6.3.0
     dev: false
@@ -717,7 +717,7 @@ packages:
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
-      semver: 7.5.1
+      semver: 7.5.2
       tar: 6.1.15
     transitivePeerDependencies:
       - encoding
@@ -840,7 +840,7 @@ packages:
     resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
     dependencies:
       '@types/jsonfile': 6.1.1
-      '@types/node': 18.16.17
+      '@types/node': 18.16.18
     dev: true
 
   /@types/hast@2.3.4:
@@ -856,7 +856,7 @@ packages:
   /@types/jsonfile@6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 18.16.17
+      '@types/node': 18.16.18
     dev: true
 
   /@types/mdast@3.0.11:
@@ -887,8 +887,8 @@ packages:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
     dev: false
 
-  /@types/node@18.16.17:
-    resolution: {integrity: sha512-QAkjjRA1N7gPJeAP4WLXZtYv6+eMXFNviqktCDt4GLcmCugMr5BcRHfkOjCQzvCsnMp+L79a54zBkbw356xv9Q==}
+  /@types/node@18.16.18:
+    resolution: {integrity: sha512-/aNaQZD0+iSBAGnvvN2Cx92HqE5sZCPZtx2TsK+4nvV23fFe09jVDvpArXr2j9DnYlzuU9WuoykDDc6wqvpNcw==}
     dev: true
 
   /@types/parse5@6.0.3:
@@ -1073,8 +1073,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro@2.6.3(sharp@0.31.3):
-    resolution: {integrity: sha512-gJoBX+t11qAeYDjterGEaQZx7qqlGOigWhE0zkcEBv4zy7l4IpKx6nGGUNzD/l8x6WomZxkdZROsOsiEaWSJmQ==}
+  /astro@2.6.4(sharp@0.31.3):
+    resolution: {integrity: sha512-YM5H9SLHflxCB/3H8S2Bi+1Lbwn/MA9Vl/eOZmkCT491gvBsyuKCTsoUas6fwggeKn+fIR2XpdYd2F+unQve3g==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -1086,7 +1086,7 @@ packages:
       '@astrojs/compiler': 1.5.1
       '@astrojs/internal-helpers': 0.1.0
       '@astrojs/language-server': 1.0.8
-      '@astrojs/markdown-remark': 2.2.1(astro@2.6.3)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.6.4)
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.5
@@ -1125,7 +1125,7 @@ packages:
       preferred-pm: 3.0.3
       prompts: 2.4.2
       rehype: 12.0.1
-      semver: 7.5.1
+      semver: 7.5.2
       server-destroy: 1.0.1
       sharp: 0.31.3
       shiki: 0.14.2
@@ -1231,15 +1231,15 @@ packages:
     dependencies:
       fill-range: 7.0.1
 
-  /browserslist@4.21.7:
-    resolution: {integrity: sha512-BauCXrQ7I2ftSqd2mvKHGo85XR0u7Ru3C/Hxsy/0TkfCtjrmAbPdzLGasmoiBxplpDXlPvdjX9u7srIMfgasNA==}
+  /browserslist@4.21.9:
+    resolution: {integrity: sha512-M0MFoZzbUrRU4KNfCrDLnvyE7gub+peetoTid3TBIqtunaDJyXlwhakT+/VkvSXcfIzFfK/nkCs4nmyTmxdNSg==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001498
-      electron-to-chromium: 1.4.427
+      caniuse-lite: 1.0.30001503
+      electron-to-chromium: 1.4.432
       node-releases: 2.0.12
-      update-browserslist-db: 1.0.11(browserslist@4.21.7)
+      update-browserslist-db: 1.0.11(browserslist@4.21.9)
     dev: false
 
   /buffer@5.7.1:
@@ -1274,8 +1274,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /caniuse-lite@1.0.30001498:
-    resolution: {integrity: sha512-LFInN2zAwx3ANrGCDZ5AKKJroHqNKyjXitdV5zRIVIaQlXKj3GmxUKagoKsjqUfckpAObPCEWnk5EeMlyMWcgw==}
+  /caniuse-lite@1.0.30001503:
+    resolution: {integrity: sha512-Sf9NiF+wZxPfzv8Z3iS0rXM1Do+iOy2Lxvib38glFX+08TCYYYGR5fRJXk4d77C4AYwhUjgYgMsMudbh2TqCKw==}
     dev: false
 
   /ccount@2.0.1:
@@ -1564,8 +1564,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: false
 
-  /electron-to-chromium@1.4.427:
-    resolution: {integrity: sha512-HK3r9l+Jm8dYAm1ctXEWIC+hV60zfcjS9UA5BDlYvnI5S7PU/yytjpvSrTNrSSRRkuu3tDyZhdkwIczh+0DWaw==}
+  /electron-to-chromium@1.4.432:
+    resolution: {integrity: sha512-yz3U/khQgAFT2HURJA3/F4fKIyO2r5eK09BQzBZFd6BvBSSaRuzKc2ZNBHtJcO75/EKiRYbVYJZ2RB0P4BuD2g==}
     dev: false
 
   /emmet@2.4.4:
@@ -3077,7 +3077,7 @@ packages:
     resolution: {integrity: sha512-iwXuFrMAcFVi/ZoZiqq8BzAdsLw9kxDfTC0HMyjXfSL/6CSDAGD5UmR7azrAgWV1zKYq7dUUMj4owusBWKLsiQ==}
     engines: {node: '>=10'}
     dependencies:
-      semver: 7.5.1
+      semver: 7.5.2
     dev: false
 
   /node-addon-api@5.1.0:
@@ -3176,8 +3176,8 @@ packages:
     dependencies:
       mimic-fn: 4.0.0
 
-  /open-props@1.5.8:
-    resolution: {integrity: sha512-pE9oKg+4rDrKNJpHNSP1ensgMz41YW5pPCHExd4P12595gdObMmiO1OhTvXG0t7inRS54GhyZr5jm+28XzapEg==}
+  /open-props@1.5.9:
+    resolution: {integrity: sha512-7cY+O+QPiLFcm1a/nnkSK7CHLIW55XBwnnKYS2ajGcWw/xmY990JkgPzYFbohOODyCGM6oJZ+XzRJF7207QqiA==}
     dev: false
 
   /open@9.1.0:
@@ -3633,8 +3633,8 @@ packages:
       glob: 7.2.3
     dev: false
 
-  /rollup@3.25.0:
-    resolution: {integrity: sha512-FnJkNRst2jEZGw7f+v4hFo6UTzpDKrAKcHZWcEfm5/GJQ5CK7wgb4moNLNAe7npKUev7yQn1AY/YbZRIxOv6Qg==}
+  /rollup@3.25.1:
+    resolution: {integrity: sha512-tywOR+rwIt5m2ZAWSe5AIJcTat8vGlnPFAv15ycCrw33t6iFsXZ6mzHVFh2psSjxQPmI+xgzMZZizUAukBI4aQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -3688,8 +3688,8 @@ packages:
     hasBin: true
     dev: false
 
-  /semver@7.5.1:
-    resolution: {integrity: sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==}
+  /semver@7.5.2:
+    resolution: {integrity: sha512-SoftuTROv/cRjCze/scjGyiDtcUyxw1rgYQSZY7XTmtR5hX+dm76iDbTH8TkLPHCQmlbQVSSbNZCPM2hb0knnQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -3717,7 +3717,7 @@ packages:
       detect-libc: 2.0.1
       node-addon-api: 5.1.0
       prebuild-install: 7.1.1
-      semver: 7.5.1
+      semver: 7.5.2
       simple-get: 4.0.1
       tar-fs: 2.1.1
       tunnel-agent: 0.6.0
@@ -4138,13 +4138,13 @@ packages:
     resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
     engines: {node: '>=8'}
 
-  /update-browserslist-db@1.0.11(browserslist@4.21.7):
+  /update-browserslist-db@1.0.11(browserslist@4.21.9):
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
-      browserslist: 4.21.7
+      browserslist: 4.21.9
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: false
@@ -4214,7 +4214,7 @@ packages:
     dependencies:
       esbuild: 0.17.19
       postcss: 8.4.24
-      rollup: 3.25.0
+      rollup: 3.25.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
@@ -4423,7 +4423,7 @@ packages:
     dependencies:
       '@types/fs-extra': 11.0.1
       '@types/minimist': 1.2.2
-      '@types/node': 18.16.17
+      '@types/node': 18.16.18
       '@types/ps-tree': 1.1.2
       '@types/which': 3.0.0
       chalk: 5.2.0
