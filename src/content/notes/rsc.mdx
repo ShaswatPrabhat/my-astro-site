@@ -78,4 +78,35 @@ draft: false
   ```
 * A common theme is that developers have to expose additional endpoints to power their UI, or use existing endpoints that weren’t always designed with that UI in mind.
 * Server Components treat all imports of Client Components as potential code-split points.
-* 
+* The problem isn’t really the round trips, it’s that they are from client to server. By moving this logic to the server we reduce the request latency and improve performance.
+* If a Server Component with multiple layers of wrappers for configurability ends up rendering to a single element, then that's all that will be sent to the client.
+* PHP, Rails, etc — is certainly one way to address some of these challenges, but that approach makes it much harder to build rich, interactive experiences. This reflects a long-standing tension in the world of application development that predates the web: whether to use <u>thin</u> or <u>thick</u> clients.
+* But mixing server and client rendering often means mixing technologies: writing code in two languages, using two frameworks, keeping two sets of idioms and ecosystems in mind.
+<br/>
+#### The flow of Rendering:
+1. Router will match the requested `URL` to a `Server Component`, passing the `route` parameters as `props` to the component.
+2. React will render the `root` Server Component and any children that are also Server Components. Rendering stops at native components (`divs`, `spans` etc) and at Client Components. Native components are streamed as a `JSON` description of the UI, and Client Components are streamed including the serialized props.
+3. You can think of the data streamed to the target as `JSON` but with `slots` for components that suspend, where the values to place into those `slots` are provided as additional items later in the response stream.
+4. On the `client`, the framework receives the streamed React response and renders it on the page with React.
+5. React deserializes the response and renders the native elements and Client Components. <u>This happens progressively — React doesn’t need to wait for the whole stream to finish in order to show something.</u>
+6. React `reconciles` (merges) the new rendered output with the existing components on screen. Because the description of the UI is `data`, not `HTML`, React can merge new props into existing components, preserving important UI state such as focus or typing input, or triggering CSS transitions on existing content. This is a key reason that Server Components return rendered UI output as data (“virtual DOM”) instead of HTML.
+7. Client Components can’t access server-only features like the filesystem, Server Components can’t access client-only features like state, and Client Components may only import other Client Components.
+#### Server Components Rules:
+* ❌ May not use state, because they execute (conceptually) only once per request, on the server. So useState() and useReducer() are not supported.
+* ❌ May not use rendering lifecycle (effects). So useEffect() and useLayoutEffect() are not supported.
+* ❌ May not use browser-only APIs such as the DOM (unless you polyfill them on the server).
+* ❌ May not use custom hooks that depend on state or effects, or utility functions that depend on browser-only APIs.
+* ✅ May use async / await with server-only data sources such as databases, internal (micro)services, filesystems, etc.
+* ✅ May render other Server Components, native elements (div, span, etc), or Client Components.
+
+#### Client Components Rules:
+* ❌ May not import Server Components or call server hooks/utilities, because those only work on the server. However, a Server Component may pass another Server Component as a child to a Client Component: `<ClientTabBar><ServerTabContent /></ClientTabBar>`. From the Client Component’s perspective, its child will be an already rendered tree, such as the `ServerTabContent` output. This means that Server and Client components can be nested and interleaved in the tree at any level.
+❌ May not use server-only data sources.
+✅ May use state.
+✅ May use effects.
+✅ May use browser-only APIs.
+✅ May use custom hooks and utilities that use state, effects or browser-only APIs.
+<br/>
+* To mark a component as a Client Component, add ``use client'` directive at the top of your file.
+* To be used only for Client Components that you import from Server Components.
+* [Areas of research and open questions](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md#open-areas-of-research)
