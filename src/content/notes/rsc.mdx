@@ -1,18 +1,81 @@
 ---
 title: "React Server Components"
 description: "Notes dump for RSC"
-pubDate: "May 26, 2023"
+pubDate: "June 17, 2023"
 draft: false
 ---
-
+#### Miscellaneous notes
 * From [Reactathon interview of Ben, Ryan and Tanner](https://www.youtube.com/watch?v=QRVtu9_xi2k), ideally will run all the logic on the server and ideally eliminate the need to have hydration on Client side for server rendered apps.
-
 * It eliminates the need to have the server side logic on your client side code.
-
 * If something needs to be run on the client then used a directive to run all of it as a Client bundle.
-
 * From [Jeff's talk](https://www.youtube.com/watch?v=TJOiXyVKExg), code complexity increases but so do the performance benefits with React.
-
 * Some frameworks can reduce complexity.
+* Parallel non blocking data loading by default.
 
-* Parallel non blocking data loading by default
+<br/>
+#### Notes from the RFC Read
+* Server Components allow developers to build <u>apps that span the server and client.</u>
+* Combines the rich interactivity of client-side apps with the improved performance of traditional server rendering.
+* Server Components run <u>only on the server</u>. Hence they have zero constributions to bundle size.
+* They can access Server side data resources like Databases, micro services directly.
+* Server Components load data on the server and then pass it on to Client Components via props on the network.
+* Server Components <u>preserve client state when reloaded.</u> This means that client state, focus, and even ongoing animations aren’t disrupted or reset when a Server Component tree is refetched.
+* Server Components can incrementally stream rendered bits and pieces of the UI over network - <u>Incremental Hydration.</u>
+* Combined with `Suspense` we are able to develop custom loading states on the Client side for Server Data.
+* Developers can also <u>share code between the server and client.</u>
+* We use `use client` directive to indicate a `client` side component.
+    ```js
+    // Note.js - Server Component
+    import db from 'db'; 
+    // (A1) We import from NoteEditor.js - a Client Component.
+    import NoteEditor from 'NoteEditor';
+
+    async function Note(props) {
+    const {id, isEditing} = props;
+    // (B) Can directly access server data sources during render, e.g. databases
+    const note = await db.posts.get(id);
+    
+    return (
+        <div>
+        <h1>{note.title}</h1>
+        <section>{note.body}</section>
+        {/* (A2) Dynamically render the editor only if necessary */}
+        {isEditing 
+            ? <NoteEditor note={note} />
+            : null
+        }
+        </div>
+    );
+    }
+    ```
+* Supports `top-level awaits` to ensure access to DB or micro services.
+* Does not support concepts of `state` or `effects` as these are not relevant in a `Server space`.
+* Can conditionally render `client components`, servers hand over the responsibility to `client`. These components are treated as normal React components and bundled accordingly.
+* #### <u>Client Components are just regular components.</u>
+* The fundamental challenge was that <u>React apps were client-centric and weren’t taking sufficient advantage of the server.</u>
+* #### <u>First, we wanted to make it easier for developers to fall into the `pit of success` and achieve good performance by default.</u>
+* #### <u>Second, we wanted to make it easier to fetch data in React apps.</u>
+* Using libraries is helpful as developers but increases bundle size and can hurt application performance.
+  ```js
+  // NOTE: *before* Server Components
+    import marked from 'marked'; // 35.9K (11.2K gzipped)
+    import sanitizeHtml from 'sanitize-html'; // 206K (63.3K gzipped)
+
+    function NoteWithMarkdown({text}) {
+    const html = sanitizeHtml(marked(text));
+    return (/* render */);
+    }
+  ```
+* With Server components we can render this on the server and do not need to send this as a bundle to the client:
+  ```js
+  // Server Component === zero bundle size
+    import marked from 'marked'; // zero bundle size
+    import sanitizeHtml from 'sanitize-html'; // zero bundle size
+
+    function NoteWithMarkdown({text}) {
+    // same as before
+    }
+  ```
+* A common theme is that developers have to expose additional endpoints to power their UI, or use existing endpoints that weren’t always designed with that UI in mind.
+* Server Components treat all imports of Client Components as potential code-split points.
+* 
