@@ -32,7 +32,7 @@ draft: false
 * When something can be calculated from the existing props or state, don’t put it in state. Instead, calculate it during rendering.
 * Try to write every `Effect` as an independent process and think about a single setup/cleanup cycle at a time. It shouldn’t matter whether your component is mounting, updating, or unmounting. When your cleanup logic correctly “mirrors” the setup logic, your `Effect` is resilient to running setup and cleanup as often as needed.
 * <u>If you’re not connecting to any external system, you probably don’t need an Effect.</u>
-* Effects are an <u>escape hatch</u>: you use them when you need to <i>step outside React<i> and when there is no better built-in solution for your use case.
+* Effects are an <u>escape hatch</u>: you use them when you need to <i>step outside React</i> and when there is no better built-in solution for your use case.
 * Downsides of `effects` to `fetch` data:
   * The run only on server: This means the Server rendered app will not have the data and hence will need to run the full JS on Client side again
   * Fetching directly in Effects makes it easy to create `network waterfalls`.
@@ -58,7 +58,7 @@ draft: false
     onVisit(url);
   }, [url]); // ✅ All dependencies declared
   // ...
-}
+  }
   ```
 * This is what lets you put <u>non-reactive</u> code (where you can read the latest value of some props and state) inside of them.
 * If you have cleanup code without corresponding setup code, it’s usually a code smell.
