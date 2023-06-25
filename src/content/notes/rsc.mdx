@@ -113,3 +113,29 @@ draft: false
 #### Notes from implemeneting RSC from scatch by Dan
 [Discussion here](https://github.com/reactwg/server-components/discussions/5)
 * 
+#### Notes from RSC with Ben and Dan [here](https://www.youtube.com/watch?v=Fctw7WjmxpU&t=126s)
+* Let us keep the UX as good as modern Apps but let us also keep the mental model of a traditional request response based structure.
+* Like `jsx` Server components are slightly complex and not too conventional to understand.
+* If you think from a Streaming perspective the model of splitting components to client and Servers makes more sense to avoid Network waterfalls.
+* `Rails` to `Client-side`.
+* `Server` and `Client` meanings in `RSC`'s context is very important. A stuff that transfers and a stuff that translates.
+* `Client` stuff also runs on the `Server` during SSR so it gets tricky to have a clear frame of mind while approaching this.
+* It is closer to a `Cient-Server Model` rather than a convetional `Server` or `Client`.
+* One way to think about is `Build time` Components.
+* Is DIY Server Components needed or is `NextJS` is the way to go?
+* With `Client-Only`  you are signing up for a lock-in wherein the contents are CSR only and if later you want pure `HTML` then it gets tricky. We should not need a bundle for this.
+* so best way will be start with Client only and then move to Server Components when something closer to pure `HTML` is needed.
+* Router belongs outside the `React` app.
+* Recently say `getServerSideProps` can be replaced with `async/await` at top level.
+* Aim from a framework perspective is to get the frameworks folded in to more `vanilla` React.
+* For Bundling of Server Components it relies on features that do not exist on Bundlers today.
+* Next gen Bundlers and Routers.
+* For present bundlers what needs support is the `use client` API.
+* `Code splitting` on Client vs Server level.
+* An ideal bundler will take the above idea and split put code for server and client trees. As a single task with multiple bundle outputs for different targets.
+* Bundlers need to be redesigned around this idea.
+* Modern bundlers will need to have features like Build caching, compiling to the last method that is needed.
+* Sometimes server sent `props` can be quite heavy and become a performance bottle neck
+* From a Client it can get really tricky to understand what is happening on the server.
+* Server Components do not have a waterfall of network calls.
+* 
