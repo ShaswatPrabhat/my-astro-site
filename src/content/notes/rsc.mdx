@@ -138,4 +138,23 @@ draft: false
 * Sometimes server sent `props` can be quite heavy and become a performance bottle neck
 * From a Client it can get really tricky to understand what is happening on the server.
 * Server Components do not have a waterfall of network calls.
-* 
+
+
+#### Notes from RSC with Kent, Joe and Dan [here](https://youtu.be/h7tur48JSaw)
+* React's take for what a back-end server code might look like
+* `Server` in this scenario means ahead-of-time.
+* Little more colocation.
+* Server has lower latency when accessing data.
+* RSC is `stil React.` Sharing of code becomes easier.
+* Architecture becomes easier
+* For an MPA when we navigate, we are kind of blowing away the state. With RSC say opening up of navigation states etc are retained.
+* Reduced amount of Client Side components.
+* Say a Tweet component that does everything, fetches everything from the API and we just need to render it.
+* Ability to compose server components all the way down.
+* a Waterfall if it does happen, happens on the Server.
+* RSC does not belong on the Edge necessarily.
+* Server component layer should be closest to the data layer.
+* SSR and Server Component layers are 2 different layers
+* SSR can be placed on the Edge and RSC closer to the Data layer.
+* Very hard to actually write JS code that can avoid waterfall. We need to endure to use `Promise.all` say or use `await` only where needed.
+* `Route` segments can be fetched in parallel.
