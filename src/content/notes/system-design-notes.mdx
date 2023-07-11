@@ -1,0 +1,69 @@
+---
+title: "System Design"
+description: "System Design Notes"
+pubDate: "Jul 9, 2023"
+draft: false
+---
+<h3>High level design</h3>
+* HLD talks about the Overall Architecure of the system
+* Design with scalability in mind
+* Can it meet the latency, scalability and performance requirements they might have
+* Break the system into multiple components into services and micro-services
+* Interactions between services. Do they use sync or async communications
+* What kind of protocols do they use? `HTTP`, `WebSockets` or `RPC`
+* What kind of Database are we going to use
+* Design should be future proof, non restricting and modular
+* Talk about functional requirements, ask and be clear on them
+* NFR's scale expectations, latency and consistency
+<br/><br/>
+<h4>Steps to approaching an HLD:</h4>
+  1. Propose a design
+  2. Talk about tradeoff's say DB's 
+  3. For each of your components discuss which one makes more sense as per design choices
+  4. Talk about the limitations of the design say Monitoring or Analytics
+<br/><br/>
+<h3>Low level design</h3>
+* Digs deeper into HLD
+* Implementation specifics
+* Optimization in terms of Code ensuring maintainability
+* Structure of the code, should be working and clean code
+* Design should be non restrictive and modular again
+* Get reuirements FR + NFR
+* For Code define the Interfaces first, API's etc and clean layers 
+* Class hierarchy and their implementations and interactions
+* Each of the Classes should be clean and cler responsilbilities as well
+* Entities and Data models needs to be defined as well
+* Design Patterns that can be used as well
+* Code should be in a working condition and all the basic test cases should be passing
+* It should be modular
+* Each piece should be testable individually
+* Each method does one thing and does it well
+<br/><br/>
+### Basic building blocks
+* Bound by Technology  - very hard to move away from framworks - this is for monoliths.
+* Traffic spikes - Monoliths make it tricky to scale.
+* Deployment is heavy
+* Exponential issues which starts choking all the other modules as well
+* Microservices based arch - break the system into some logical components aligned with team composition
+* Separation of Concerns
+* Easy for Engineers to understand what is going on
+* Faster iterations as it is light and can have smaller cheaper deployments
+* Always tradeoffs - either Mono or Microservices can be great
+<br/><br/>
+* Microservices add:
+  * Higher Latency
+  * Network failures and retries error handling
+  * Easy to make backward incomaptible changes that break on Production
+  * Automation of contract  testing can help in such cases
+  * Operational costs - Microservices need more instrumentation for proper log tracing etc
+  * Building Log aggregation system is an added cost
+  * Service discovery needs some help from the infra
+  * Systems like configuration managers, access policy, Messaging system, auto scaling etc need to be maintained
+  * If we have 100's or 1000's of MicroServices then the above cost becomes negligible
+  * Mostly in interviews use MicroServices based approach
+<br/><br/>
+* Services interaction
+* Sync - when service waits for its downstream system to respond back
+* In case of an error it might send the error back to the caller ot cascade ot back to the caller.
+* Async - Fire and Forget, does not care about the results
+* 

@@ -334,6 +334,13 @@ declare module 'astro:content' {
   collection: "notes";
   data: InferEntrySchema<"notes">
 } & { render(): Render[".mdx"] };
+"system-design-notes.mdx": {
+	id: "system-design-notes.mdx";
+  slug: "system-design-notes";
+  body: string;
+  collection: "notes";
+  data: InferEntrySchema<"notes">
+} & { render(): Render[".mdx"] };
 "system-design.mdx": {
 	id: "system-design.mdx";
   slug: "system-design";
