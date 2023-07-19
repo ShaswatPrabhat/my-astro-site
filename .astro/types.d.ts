@@ -371,6 +371,13 @@ declare module 'astro:content' {
   collection: "til";
   data: InferEntrySchema<"til">
 } & { render(): Render[".mdx"] };
+"css/5.mdx": {
+	id: "css/5.mdx";
+  slug: "css/5";
+  body: string;
+  collection: "til";
+  data: InferEntrySchema<"til">
+} & { render(): Render[".mdx"] };
 "firebase/4.mdx": {
 	id: "firebase/4.mdx";
   slug: "firebase/4";

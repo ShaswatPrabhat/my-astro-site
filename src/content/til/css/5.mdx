@@ -1,0 +1,41 @@
+---
+title: "CSS in 2023"
+description: "New TIL created by script"
+pubDate: "Jul 19, 2023"
+draft: false
+source: "https://www.smashingmagazine.com/2023/07/writing-css-2023/"
+tags: ["css"]
+---
+* Not exactly seeing that same organic adoption happen as had happened for `SASS`
+* I still use media queries for responsive layouts but tend to reserve them for “bigger” layouts that are made up of assembled containers. Otherwise `container-queries` is preferred.
+* With :is(), specificity is determined not by the main selector but by the most specific selector in its argument list.
+  ```css
+  /* Specificity: 0 1 1 */
+    :is(ol, .list, ul) li {}
+
+    /* Specificity: 0 0 2 */
+    ol li {}
+
+  ```
+* Use prefers-reduced-motion to slow everything down when that’s the preference.
+* Using `css variables` with `color-functions` is a powerful idea:
+  ```css
+  :root {
+    /* Primary Color HSL */
+    --h: 21deg;
+    --s: 100%;
+    --l: 50%;
+    
+    --color-primary: hsl(var(--h) var(--s) var(--l) / 1);
+    }
+
+  .bg-color {
+    background: var(--color-primary);
+    }
+
+  .bg-color--secondary {
+    --h: 56deg;
+    background: hsl(var(--h) var(--s) var(--l) / 1);
+    }
+
+  ```
