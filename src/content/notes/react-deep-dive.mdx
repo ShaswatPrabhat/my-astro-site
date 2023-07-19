@@ -34,7 +34,7 @@ draft: false
 * <u>If you’re not connecting to any external system, you probably don’t need an Effect.</u>
 * Effects are an <u>escape hatch</u>: you use them when you need to <i>step outside React</i> and when there is no better built-in solution for your use case.
 * Downsides of `effects` to `fetch` data:
-  * The run only on server: This means the Server rendered app will not have the data and hence will need to run the full JS on Client side again
+  * The run only on client: This means the Server rendered app will not have the data and hence will need to run the full JS on Client side again
   * Fetching directly in Effects makes it easy to create `network waterfalls`.
   * Fetching directly in Effects usually means you don’t preload or cache data. For example, if the component unmounts and then mounts again, it would have to fetch the data again.
 * You can’t “choose” the dependencies of your Effect. Every reactive value used by your Effect’s code must be declared as a dependency.
@@ -47,7 +47,7 @@ draft: false
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 * Avoid using a function or an object created during rendering as a dependency. Instead, declare it inside the Effect.
-* `Effect Events` are not reactive and must always be omitted from dependencies of your `Effect`:
+* `Effect Events` are not reactive and must always be omitted from dependencies of your `Effect`. The code below means that only on change of `url` will we re-reun the effect but not on change of `shoppingCart`:
   ```js
   function Page({ url, shoppingCart }) {
   const onVisit = useEffectEvent(visitedUrl => {
