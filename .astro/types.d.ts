@@ -399,6 +399,13 @@ declare module 'astro:content' {
   collection: "til";
   data: InferEntrySchema<"til">
 } & { render(): Render[".mdx"] };
+"react/6.mdx": {
+	id: "react/6.mdx";
+  slug: "react/6";
+  body: string;
+  collection: "til";
+  data: InferEntrySchema<"til">
+} & { render(): Render[".mdx"] };
 };
 
 	};

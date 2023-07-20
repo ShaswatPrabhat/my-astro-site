@@ -1,0 +1,54 @@
+---
+title: "React 18 and performance"
+description: "Notes from the excellent blog on Vercel"
+pubDate: "Jul 20, 2023"
+draft: false
+source: "https://vercel.com/blog/how-react-18-improves-application-performance"
+tags: ["react"]
+---
+* Any task that takes more than 50 milliseconds to run is considered a [long task](https://web.dev/long-tasks-devtools/#what-are-long-tasks).
+* Device must create a new frame every 16 ms (~60fps)
+* Additional time for other tasks while maintaining smooth visual experience.
+* ##### Aim: Minimize long tasks (duh!)
+* Total Blocking Time = TTI - FCP
+* The Interaction to Next Paint (INP), a new Core Web Vitals metric, measures the time from a user's first interaction with the page (e.g. clicking a button) to when this interaction is visible on-screen; the next paint.
+* INP is important for site like e-commerce with a lot of user interactions.
+* A visual update in React is divided into two phases: the render phase and the commit phase.
+* During the render phase, React calculates the differences between the current DOM and the new React component tree and prepares the necessary updates.
+* In the commit phase, React applies the updates.
+* A <u>synchronous</u> render is an “all-or-nothing” operation, where it’s guaranteed that a component that starts rendering will always finish.
+* <img src="https://vercel.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F3AycfW6O7Pl3v8CeC6w5ZE%2Fe16fad8cb89dd42826c0aaa2360aa160%2FGroup_513744.png&w=3840&q=75&dpl=dpl_5tc2Ra3hwXzdcV2gF8wKzFXfMACt"/>
+* React 18 introduces a new concurrent renderer that operates behind the scenes. This renderer exposes some ways for us to mark certain renders as <u>non-urgent</u>
+* <img src="https://vercel.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F3kNTGG4PZ0zQgkYwQuGh87%2F2457e4af9370fdd8d587145fa79856e0%2FGroup_513855.png&w=3840&q=75&dpl=dpl_5tc2Ra3hwXzdcV2gF8wKzFXfMACt"/>
+* React will yield back to the main thread every 5 milliseconds to see if there are more important tasks to handle.
+* By continuously yielding back to the main thread, React is able to make such renders non-blocking and prioritize more important tasks.
+* We can mark an update as non-urgent by using the `startTransition` function made available by the `useTransition` hook.
+```jsx
+import { useTransition } from "react";
+
+function Button() {
+  const [isPending, startTransition] = useTransition();
+
+  return (
+    <button
+      onClick={() => {
+        urgentUpdate();
+        startTransition(() => {
+          nonUrgentUpdate()
+        })
+      }}
+    >...</button>
+  )
+}
+```
+* Transitions enable React to render multiple versions of the UI concurrently, and manage priorities between different tasks.
+* It's up to the developer to optimize bundle size when working with Client Components and RSC. Developers can do this by:
+    1. Ensuring that only the leaf-most node of the interactive component defines the "use client" directive. This may require some component decoupling.
+    2. Passing component trees as props rather than importing them directly. This allows React to render the children as React Server Components without adding them to the client bundle.
+* Using `Suspense` in combination with React Server Components allows us to directly access server-side data sources without requiring a separate API endpoint, such as databases or the file system.
+* When a component is suspended, for example because it’s still waiting for data to load, React doesn't just sit idle until the component has received the data.
+* Instead, it pauses the rendering of the suspended component and shifts its focus to other tasks.
+<img src="https://vercel.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F6Bit3X6J9YKFhufpBImjCx%2Fe215dfb092345641190d9477d6c94a6a%2FGroup_513799.png&w=3840&q=75&dpl=dpl_5tc2Ra3hwXzdcV2gF8wKzFXfMACt" />
+
+* The combination of `Suspense` with React Server Component’s streamable format allows high-priority updates to be sent to the client as soon as they're ready, without waiting for lower-priority rendering tasks to complete.
+
