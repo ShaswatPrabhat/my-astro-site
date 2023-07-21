@@ -17,7 +17,7 @@
     "@astrojs/rss": "^2.4.3",
     "@astrojs/sitemap": "^1.4.0",
     "@astrojs/vercel": "^3.7.3",
-    "astro": "^2.8.5",
+    "astro": "^2.9.0",
     "open-props": "^1.5.10",
     "sharp": "^0.31.3"
   },
