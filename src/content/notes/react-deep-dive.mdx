@@ -63,4 +63,21 @@ draft: false
 * This is what lets you put <u>non-reactive</u> code (where you can read the latest value of some props and state) inside of them.
 * If you have cleanup code without corresponding setup code, it’s usually a code smell.
 * The primary benefit of `useId` is that `React` ensures that it works with server rendering. During server rendering, your components generate HTML output. Later, on the client, hydration attaches your event handlers to the generated HTML. For hydration to work, the client output must match the server HTML.
+* `JSX` is a syntax extension, while `React` is a JavaScript library.
+* `JSX` looks like HTML, but under the hood it is transformed into plain `JavaScript` objects.
+* `props` are <u>immutable</u>
+* <u>Don’t put numbers on the left side of &&.</u>
+* Even though event handlers are defined inside your component, they don’t run during rendering! So event handlers don’t need to be pure.
+* `e.stopPropagation()` prevents the event from bubbling further.
+* If we want to capture events even if they have stopped propagation say for analytics:
+  ```jsx
+  <div onClickCapture={() => { /* this runs first */ }}>
+    <button onClick={e => e.stopPropagation()} />
+    <button onClick={e => e.stopPropagation()} />
+  </div>
+  ```
+  `Capture` events are useful for code like routers or analytics
+* Event handlers are the <u>best</u> place for side effects.
+* Local variables don’t persist between renders and change to local variables do not trigger renders.
+* Unlike props, state is fully private to the component declaring it.
 * 
