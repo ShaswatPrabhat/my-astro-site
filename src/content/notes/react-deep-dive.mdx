@@ -13,7 +13,7 @@ draft: false
 * React automatically re-renders components that read some context if it changes.
 * `useContext()` always looks for the closest provider <u>above</u> the component that calls it. It searches upwards and does not consider providers in the component from which you’re calling `useContext().`
 * Extract Contexts into Reducers and Hooks to expose the methods to scale them:
-  
+
   <br/><iframe src="https://codesandbox.io/embed/crimson-glitter-hwl4y7?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="crimson-glitter-hwl4y7"
@@ -80,4 +80,21 @@ draft: false
 * Event handlers are the <u>best</u> place for side effects.
 * Local variables don’t persist between renders and change to local variables do not trigger renders.
 * Unlike props, state is fully private to the component declaring it.
-* 
+* Updating your component’s state automatically <u>queues</u> a render.
+* On initial render, React will call the root component.
+* For subsequent renders, React will call the function component whose state update triggered the render.
+* <u>The default behavior of rendering all components nested within the updated component is not optimal for performance if the updated component is very high in the tree. </u>
+* A state variable’s value never changes within a render, even if its event handler’s code is asynchronous.
+* You can mentally substitute state in event handlers, similarly to how you think about the rendered JSX.
+* Each state is snapshotted to a particular time with the value of that state.
+* React queues updater methods hence we are able to  use those to trigger Batched updates.
+<br/>
+    <iframe src="https://codesandbox.io/embed/nervous-cache-y8glt2?autoresize=1&fontsize=14&hidenavigation=1&module=%2FApp.js&theme=dark"
+            style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+            title="nervous-cache-y8glt2"
+            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+    ></iframe>
+<br/>
+
+*
