@@ -97,4 +97,22 @@ draft: false
     ></iframe>
 <br/>
 
-*
+* For Something like below:
+    ```jsx
+    function Message({ messageColor }) {
+        const [color, setColor] = useState(messageColor); }
+    ```
+    The problem is that if the parent component passes a different value of messageColor later (for example, 'red' instead of 'blue'), the color state variable would not be updated!
+    The state is only initialized during the first render.
+* A component is “controlled” when the important information in it is driven by props rather than its own local state
+* Advice on writing good reducers: Each action describes a single user interaction, even if that leads to multiple changes in the data.
+* When you want a component to “remember” some information, but you don’t want that information to trigger new renders, you can use a ref.
+* ```jsx
+    // Inside of React
+    function useRef(initialValue) {
+    const [ref, unused] = useState({ current: initialValue });
+    return ref;
+    }
+    ```
+* If much of your application logic and data flow relies on refs, you might want to rethink your approach.
+
