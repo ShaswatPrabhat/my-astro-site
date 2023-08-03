@@ -115,4 +115,72 @@ draft: false
     }
     ```
 * If much of your application logic and data flow relies on refs, you might want to rethink your approach.
+* We can use `console.time` to time operations:
+    ```js
+    console.time('filter array');
+    const visibleTodos = filterTodos(todos, tab);
+    console.timeEnd('filter array');
+    ```
+* `useMemo` won’t make the first render faster. It only helps you skip unnecessary work on updates.
+* Even `jsx` can be memoized because it is an object in the end:
+    ```jsx
+    const children = useMemo(() => <List items={visibleTodos} />, [visibleTodos]);
+    ```
+* `memo` is preferred in this case because it makes the code more readable usually.
+* Code like below defeats memoization as the object will be created again and again
+    ```jsx
+    function Dropdown({ allItems, text }) {
+    const searchOptions = { matchMode: 'whole-word', text };
 
+    const visibleItems = useMemo(() => {
+        return searchItems(allItems, searchOptions);
+    }, [allItems, searchOptions]); // 🚩 Caution: Dependency on an object created in the component body
+    // ...
+    ```
+* Moving `searchOptions` down within the `useMemo` makes for a nice solution:
+    ```jsx
+    function Dropdown({ allItems, text }) {
+    const visibleItems = useMemo(() => {
+    const searchOptions = { matchMode: 'whole-word', text };
+        return searchItems(allItems, searchOptions);
+    }, [allItems, text]); // ✅ Only changes when allItems or text changes
+    // ...
+    ```
+* Just as `{}` creates a different object, function declarations like `function() {}` and expressions like `() => {}` produce a different function on every re-render.
+* In the rare case that you need to force `React` to update the screen earlier, for example to access the DOM, you can use `flushSync`.
+* <u>Always return new objects from your reducer. </u>
+* Do not write or read `ref.current` during rendering.
+* You can read or write `refs` from `event handlers` or `effects` instead:
+    ```jsx
+    function MyComponent() {
+    // ...
+        useEffect(() => {
+        // ✅ You can read or write refs in effects
+        myRef.current = 123;
+        });
+    // ...
+    function handleClick() {
+    // ✅ You can read or write refs in event handlers
+        doSomething(myOtherRef.current);
+    }
+    // ...
+    }
+    ```
+* To create a portal, call `createPortal`, passing some `JSX`, and the `DOM` node where it should be rendered:
+    ```jsx
+    import { createPortal } from 'react-dom';
+    <div>
+        <p>This child is placed in the parent div.</p>
+        {createPortal(
+            <p>This child is placed in the document body.</p>,
+            document.body
+        )}
+    </div>
+    ```
+* Call `createRoot` to create a React root for displaying content inside a browser DOM element:
+    ```jsx
+    import { createRoot } from 'react-dom/client';
+    const domNode = document.getElementById('root');
+    const root = createRoot(domNode);
+    ```
+*  
