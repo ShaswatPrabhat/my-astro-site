@@ -5,7 +5,6 @@ import vercelServerless from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  experimental: { assets: true },
   site: "https://shaswat.vercel.app/",
   integrations: [
     mdx({
