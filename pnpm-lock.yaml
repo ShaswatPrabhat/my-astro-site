@@ -19,9 +19,6 @@ dependencies:
   open-props:
     specifier: ^1.5.15
     version: 1.5.15
-  sharp:
-    specifier: ^0.32.5
-    version: 0.32.5
 
 devDependencies:
   date-fns:
@@ -998,6 +995,7 @@ packages:
 
   /@types/node@18.17.12:
     resolution: {integrity: sha512-d6xjC9fJ/nSnfDeU0AMDsaJyb1iHsqCSOdi84w4u+SlN/UgQdY5tRhpMzaFYsI4mnpvgTivEaQd0yOUhAtOnEQ==}
+    dev: true
 
   /@types/parse5@6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
@@ -1014,7 +1012,7 @@ packages:
   /@types/sax@1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 18.17.12
+      '@types/node': 17.0.45
     dev: false
 
   /@types/unist@2.0.8:
@@ -1304,7 +1302,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001525
-      electron-to-chromium: 1.4.507
+      electron-to-chromium: 1.4.508
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
     dev: false
@@ -1587,8 +1585,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: false
 
-  /electron-to-chromium@1.4.507:
-    resolution: {integrity: sha512-brvPFnO1lu3UYBpBht2qWw9qqhdG4htTjT90/9oOJmxQ77VvTxL9+ghErFqQzgj7n8268ONAmlebqjBR/S+qgA==}
+  /electron-to-chromium@1.4.508:
+    resolution: {integrity: sha512-FFa8QKjQK/A5QuFr2167myhMesGrhlOBD+3cYNxO9/S4XzHEXesyTD/1/xF644gC8buFPz3ca6G1LOQD0tZrrg==}
     dev: false
 
   /emoji-regex@10.2.1:
